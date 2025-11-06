@@ -38,73 +38,114 @@ class _SplashScreenState extends State<SplashScreen> {
     return Scaffold(
       body: Container(
         decoration: const BoxDecoration(
-          gradient: AppTheme.darkGradient,
+          gradient: LinearGradient(
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
+            colors: [
+              Color(0xFFFFD054), // Parlak sarı
+              Color(0xFFFFC042), // Daha koyu sarı
+              Color(0xFFF07724), // Turuncu
+            ],
+            stops: [0.0, 0.5, 1.0],
+          ),
         ),
         child: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              // Halley Avatar
+              const Spacer(flex: 2),
+
+              // Halley Avatar - Duolingo tarzı büyük karakter
               HalleyAvatar(
                 mood: HalleyMood.happy,
-                size: 200,
-              ),
-              
-              const SizedBox(height: 40),
-              
-              // App Name
+                size: 220,
+              )
+                  .animate()
+                  .scale(
+                    duration: 600.ms,
+                    curve: Curves.elasticOut,
+                  )
+                  .fadeIn(duration: 400.ms),
+
+              const SizedBox(height: 50),
+
+              // App Name - Duolingo tarzı büyük, bold başlık
               Text(
-                'Halley',
+                'halley',
                 style: AppTheme.textTheme.displayLarge?.copyWith(
-                  foreground: Paint()
-                    ..shader = AppTheme.primaryGradient.createShader(
-                      const Rect.fromLTWH(0, 0, 200, 70),
+                  fontSize: 56,
+                  fontWeight: FontWeight.w900,
+                  color: Colors.white,
+                  letterSpacing: 2,
+                  shadows: [
+                    Shadow(
+                      color: Colors.black.withOpacity(0.2),
+                      offset: const Offset(0, 3),
+                      blurRadius: 8,
                     ),
+                  ],
                 ),
               )
                   .animate()
-                  .fadeIn(delay: 400.ms)
-                  .slideY(begin: 0.3, end: 0),
-              
-              const SizedBox(height: 8),
-              
-              Text(
-                'Ok? Nok?',
-                style: AppTheme.textTheme.headlineMedium?.copyWith(
-                  color: AppTheme.textSecondary,
-                  letterSpacing: 4,
+                  .fadeIn(delay: 300.ms, duration: 600.ms)
+                  .slideY(begin: 0.2, end: 0, curve: Curves.easeOut),
+
+              const SizedBox(height: 12),
+
+              // Subtitle
+              Container(
+                padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 8),
+                decoration: BoxDecoration(
+                  color: Colors.white.withOpacity(0.2),
+                  borderRadius: BorderRadius.circular(20),
                 ),
-              )
-                  .animate()
-                  .fadeIn(delay: 600.ms)
-                  .slideY(begin: 0.3, end: 0),
-              
-              const SizedBox(height: 16),
-              
-              Text(
-                'İlişki Doktoru 🐧',
-                style: AppTheme.textTheme.bodyLarge?.copyWith(
-                  color: AppTheme.textTertiary,
-                ),
-              )
-                  .animate()
-                  .fadeIn(delay: 800.ms),
-              
-              const SizedBox(height: 60),
-              
-              // Loading indicator
-              SizedBox(
-                width: 40,
-                height: 40,
-                child: CircularProgressIndicator(
-                  valueColor: AlwaysStoppedAnimation<Color>(
-                    AppTheme.halleyYellow,
+                child: Text(
+                  'Ok? Nok?',
+                  style: AppTheme.textTheme.headlineSmall?.copyWith(
+                    color: Colors.white,
+                    fontWeight: FontWeight.w700,
+                    letterSpacing: 2,
                   ),
-                  strokeWidth: 3,
                 ),
               )
-                  .animate(onPlay: (controller) => controller.repeat())
-                  .fadeIn(delay: 1000.ms),
+                  .animate()
+                  .fadeIn(delay: 500.ms, duration: 600.ms)
+                  .scale(delay: 500.ms, duration: 400.ms),
+
+              const Spacer(flex: 2),
+
+              // Loading indicator - Duolingo tarzı
+              Column(
+                children: [
+                  SizedBox(
+                    width: 50,
+                    height: 50,
+                    child: CircularProgressIndicator(
+                      valueColor: const AlwaysStoppedAnimation<Color>(
+                        Colors.white,
+                      ),
+                      strokeWidth: 4,
+                      backgroundColor: Colors.white.withOpacity(0.3),
+                    ),
+                  )
+                      .animate(onPlay: (controller) => controller.repeat())
+                      .fadeIn(delay: 800.ms),
+
+                  const SizedBox(height: 16),
+
+                  Text(
+                    'Yükleniyor...',
+                    style: AppTheme.textTheme.bodyMedium?.copyWith(
+                      color: Colors.white.withOpacity(0.9),
+                      fontWeight: FontWeight.w600,
+                    ),
+                  )
+                      .animate()
+                      .fadeIn(delay: 1000.ms),
+                ],
+              ),
+
+              const SizedBox(height: 60),
             ],
           ),
         ),
