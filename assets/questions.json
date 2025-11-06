@@ -1,0 +1,951 @@
+{
+  "questions": [
+    {
+      "id": "ok_1",
+      "category": "ok_not_ok",
+      "text_tr": "Sevgilin Instagram'da bikinili fotoğraf paylaşabilir mi?",
+      "text_en": "Can your partner post bikini photos on Instagram?",
+      "answer_type": "binary",
+      "options": ["OK", "NOT OK"],
+      "premium": false
+    },
+    {
+      "id": "ok_2",
+      "category": "ok_not_ok",
+      "text_tr": "Sevgilin eski sevgilisiyle arkadaş kalabilir mi?",
+      "text_en": "Can your partner stay friends with their ex?",
+      "answer_type": "binary",
+      "options": ["OK", "NOT OK"],
+      "premium": false
+    },
+    {
+      "id": "ok_3",
+      "category": "ok_not_ok",
+      "text_tr": "Sevgilin karşı cinsten biriyle ikili yemeğe gidebilir mi?",
+      "text_en": "Can your partner have dinner alone with someone of opposite sex?",
+      "answer_type": "binary",
+      "options": ["OK", "NOT OK"],
+      "premium": false
+    },
+    {
+      "id": "ok_4",
+      "category": "ok_not_ok",
+      "text_tr": "Sevgilin senin telefonuna bakabilir mi?",
+      "text_en": "Can your partner look at your phone?",
+      "answer_type": "binary",
+      "options": ["OK", "NOT OK"],
+      "premium": false
+    },
+    {
+      "id": "ok_5",
+      "category": "ok_not_ok",
+      "text_tr": "Sevgilin gece geç saatlere kadar dışarıda kalabilir mi?",
+      "text_en": "Can your partner stay out late at night?",
+      "answer_type": "binary",
+      "options": ["OK", "NOT OK"],
+      "premium": false
+    },
+    {
+      "id": "ok_6",
+      "category": "ok_not_ok",
+      "text_tr": "Sevgilin başkasının evinde yatabilir mi?",
+      "text_en": "Can your partner sleep at someone else's house?",
+      "answer_type": "binary",
+      "options": ["OK", "NOT OK"],
+      "premium": false
+    },
+    {
+      "id": "ok_7",
+      "category": "ok_not_ok",
+      "text_tr": "Sevgilin Instagram'da başkalarının fotoğraflarına kalp atabilir mi?",
+      "text_en": "Can your partner like other people's photos on Instagram?",
+      "answer_type": "binary",
+      "options": ["OK", "NOT OK"],
+      "premium": false
+    },
+    {
+      "id": "ok_8",
+      "category": "ok_not_ok",
+      "text_tr": "Sevgilin sana her şeyini söylemek zorunda mı?",
+      "text_en": "Does your partner have to tell you everything?",
+      "answer_type": "binary",
+      "options": ["OK", "NOT OK"],
+      "premium": false
+    },
+    {
+      "id": "ok_9",
+      "category": "ok_not_ok",
+      "text_tr": "Sevgilin senin sosyal medya şifrelerini bilmeli mi?",
+      "text_en": "Should your partner know your social media passwords?",
+      "answer_type": "binary",
+      "options": ["OK", "NOT OK"],
+      "premium": false
+    },
+    {
+      "id": "ok_10",
+      "category": "ok_not_ok",
+      "text_tr": "Sevgilin karşı cinsten yakın arkadaşlara sahip olabilir mi?",
+      "text_en": "Can your partner have close friends of opposite sex?",
+      "answer_type": "binary",
+      "options": ["OK", "NOT OK"],
+      "premium": true
+    },
+    {
+      "id": "ok_11",
+      "category": "ok_not_ok",
+      "text_tr": "Sevgilin seninle kavga ederken bağırabilir mi?",
+      "text_en": "Can your partner yell during an argument?",
+      "answer_type": "binary",
+      "options": ["OK", "NOT OK"],
+      "premium": false
+    },
+    {
+      "id": "ok_12",
+      "category": "ok_not_ok",
+      "text_tr": "Sevgilin eski sevgilisinin fotoğraflarını saklayabilir mi?",
+      "text_en": "Can your partner keep photos of their ex?",
+      "answer_type": "binary",
+      "options": ["OK", "NOT OK"],
+      "premium": false
+    },
+    {
+      "id": "ok_13",
+      "category": "ok_not_ok",
+      "text_tr": "Sevgilin senin yokluğunda arkadaşlarına ev partisi verebilir mi?",
+      "text_en": "Can your partner throw a house party when you're not around?",
+      "answer_type": "binary",
+      "options": ["OK", "NOT OK"],
+      "premium": false
+    },
+    {
+      "id": "ok_14",
+      "category": "ok_not_ok",
+      "text_tr": "Sevgilin strip club'a gidebilir mi?",
+      "text_en": "Can your partner go to a strip club?",
+      "answer_type": "binary",
+      "options": ["OK", "NOT OK"],
+      "premium": false
+    },
+    {
+      "id": "ok_15",
+      "category": "ok_not_ok",
+      "text_tr": "Sevgilin seninle ilgili özel şeyleri arkadaşlarına anlatabilir mi?",
+      "text_en": "Can your partner share private things about you with friends?",
+      "answer_type": "binary",
+      "options": ["OK", "NOT OK"],
+      "premium": false
+    },
+    {
+      "id": "ok_16",
+      "category": "ok_not_ok",
+      "text_tr": "Sevgilin senden habersiz tatile gidebilir mi?",
+      "text_en": "Can your partner go on vacation without telling you?",
+      "answer_type": "binary",
+      "options": ["OK", "NOT OK"],
+      "premium": false
+    },
+    {
+      "id": "ok_17",
+      "category": "ok_not_ok",
+      "text_tr": "Sevgilin senin ailenle anlaşmak zorunda mı?",
+      "text_en": "Does your partner have to get along with your family?",
+      "answer_type": "binary",
+      "options": ["OK", "NOT OK"],
+      "premium": false
+    },
+    {
+      "id": "ok_18",
+      "category": "ok_not_ok",
+      "text_tr": "Sevgilin bekarlığa veda partisine gidebilir mi?",
+      "text_en": "Can your partner go to a bachelor/bachelorette party?",
+      "answer_type": "binary",
+      "options": ["OK", "NOT OK"],
+      "premium": false
+    },
+    {
+      "id": "ok_19",
+      "category": "ok_not_ok",
+      "text_tr": "Sevgilin senin onayın olmadan büyük bir alışveriş yapabilir mi?",
+      "text_en": "Can your partner make a big purchase without your approval?",
+      "answer_type": "binary",
+      "options": ["OK", "NOT OK"],
+      "premium": false
+    },
+    {
+      "id": "ok_20",
+      "category": "ok_not_ok",
+      "text_tr": "Sevgilin senin arkadaşlarınla takılabilir mi?",
+      "text_en": "Can your partner hang out with your friends?",
+      "answer_type": "binary",
+      "options": ["OK", "NOT OK"],
+      "premium": false
+    },
+    {
+      "id": "jealous_1",
+      "category": "kiskanc",
+      "text_tr": "Sevgilin eski sevgilisinin fotoğraflarını saklasa?",
+      "text_en": "If your partner keeps photos of their ex?",
+      "answer_type": "binary",
+      "options": ["Kıskanırım", "Kıskanmam"],
+      "premium": false
+    },
+    {
+      "id": "jealous_2",
+      "category": "kiskanc",
+      "text_tr": "Sevgilin başkalarının fotoğraflarına kalp atsa?",
+      "text_en": "If your partner likes other people's photos?",
+      "answer_type": "binary",
+      "options": ["Kıskanırım", "Kıskanmam"],
+      "premium": false
+    },
+    {
+      "id": "jealous_3",
+      "category": "kiskanc",
+      "text_tr": "Sevgilin karşı cinsten yakın arkadaşlarla vakit geçirse?",
+      "text_en": "If your partner spends time with close friends of opposite sex?",
+      "answer_type": "binary",
+      "options": ["Kıskanırım", "Kıskanmam"],
+      "premium": false
+    },
+    {
+      "id": "jealous_4",
+      "category": "kiskanc",
+      "text_tr": "Sevgilin senden habersiz bir gece dışarı çıksa?",
+      "text_en": "If your partner goes out at night without telling you?",
+      "answer_type": "binary",
+      "options": ["Kıskanırım", "Kıskanmam"],
+      "premium": false
+    },
+    {
+      "id": "jealous_5",
+      "category": "kiskanc",
+      "text_tr": "Sevgilin eski sevgilisiyle mesajlaşsa?",
+      "text_en": "If your partner texts with their ex?",
+      "answer_type": "binary",
+      "options": ["Kıskanırım", "Kıskanmam"],
+      "premium": false
+    },
+    {
+      "id": "jealous_6",
+      "category": "kiskanc",
+      "text_tr": "Sevgilin iş yerinde karşı cinsten biriyle çok samimi olsa?",
+      "text_en": "If your partner is very close with someone of opposite sex at work?",
+      "answer_type": "binary",
+      "options": ["Kıskanırım", "Kıskanmam"],
+      "premium": false
+    },
+    {
+      "id": "jealous_7",
+      "category": "kiskanc",
+      "text_tr": "Sevgilin seninle kavgalıyken başkalarıyla eğlense?",
+      "text_en": "If your partner has fun with others while fighting with you?",
+      "answer_type": "binary",
+      "options": ["Kıskanırım", "Kıskanmam"],
+      "premium": false
+    },
+    {
+      "id": "jealous_8",
+      "category": "kiskanc",
+      "text_tr": "Sevgilin seni görmezden gelip telefonuyla ilgilense?",
+      "text_en": "If your partner ignores you and focuses on their phone?",
+      "answer_type": "binary",
+      "options": ["Kıskanırım", "Kıskanmam"],
+      "premium": false
+    },
+    {
+      "id": "jealous_9",
+      "category": "kiskanc",
+      "text_tr": "Sevgilin eski sevgilisinin doğum gününü kutlasa?",
+      "text_en": "If your partner celebrates their ex's birthday?",
+      "answer_type": "binary",
+      "options": ["Kıskanırım", "Kıskanmam"],
+      "premium": false
+    },
+    {
+      "id": "jealous_10",
+      "category": "kiskanc",
+      "text_tr": "Sevgilin seni arkadaşlarına tanıtmasa?",
+      "text_en": "If your partner doesn't introduce you to their friends?",
+      "answer_type": "binary",
+      "options": ["Kıskanırım", "Kıskanmam"],
+      "premium": true
+    },
+    {
+      "id": "jealous_11",
+      "category": "kiskanc",
+      "text_tr": "Sevgilin sosyal medyada ilişki durumunu gizlese?",
+      "text_en": "If your partner hides relationship status on social media?",
+      "answer_type": "binary",
+      "options": ["Kıskanırım", "Kıskanmam"],
+      "premium": false
+    },
+    {
+      "id": "jealous_12",
+      "category": "kiskanc",
+      "text_tr": "Sevgilin başka birine çekici deseydin?",
+      "text_en": "If your partner says someone else is attractive?",
+      "answer_type": "binary",
+      "options": ["Kıskanırım", "Kıskanmam"],
+      "premium": false
+    },
+    {
+      "id": "jealous_13",
+      "category": "kiskanc",
+      "text_tr": "Sevgilin seninle paylaşmadığı sırları olsa?",
+      "text_en": "If your partner has secrets they don't share with you?",
+      "answer_type": "binary",
+      "options": ["Kıskanırım", "Kıskanmam"],
+      "premium": false
+    },
+    {
+      "id": "jealous_14",
+      "category": "kiskanc",
+      "text_tr": "Sevgilin eski sevgilisinden hediye saklasa?",
+      "text_en": "If your partner keeps gifts from their ex?",
+      "answer_type": "binary",
+      "options": ["Kıskanırım", "Kıskanmam"],
+      "premium": false
+    },
+    {
+      "id": "jealous_15",
+      "category": "kiskanc",
+      "text_tr": "Sevgilin sana gereken önemi vermese?",
+      "text_en": "If your partner doesn't give you enough attention?",
+      "answer_type": "binary",
+      "options": ["Kıskanırım", "Kıskanmam"],
+      "premium": false
+    },
+    {
+      "id": "jealous_16",
+      "category": "kiskanc",
+      "text_tr": "Sevgilin seninle olan fotoğraflarını paylaşmasa?",
+      "text_en": "If your partner doesn't post photos with you?",
+      "answer_type": "binary",
+      "options": ["Kıskanırım", "Kıskanmam"],
+      "premium": false
+    },
+    {
+      "id": "jealous_17",
+      "category": "kiskanc",
+      "text_tr": "Sevgilin başka birinden bahsederken gülümsese?",
+      "text_en": "If your partner smiles when talking about someone else?",
+      "answer_type": "binary",
+      "options": ["Kıskanırım", "Kıskanmam"],
+      "premium": false
+    },
+    {
+      "id": "jealous_18",
+      "category": "kiskanc",
+      "text_tr": "Sevgilin senin yanında başkasına iltifat etse?",
+      "text_en": "If your partner compliments someone else in front of you?",
+      "answer_type": "binary",
+      "options": ["Kıskanırım", "Kıskanmam"],
+      "premium": false
+    },
+    {
+      "id": "jealous_19",
+      "category": "kiskanc",
+      "text_tr": "Sevgilin telefonunu sürekli gizlese?",
+      "text_en": "If your partner constantly hides their phone?",
+      "answer_type": "binary",
+      "options": ["Kıskanırım", "Kıskanmam"],
+      "premium": false
+    },
+    {
+      "id": "jealous_20",
+      "category": "kiskanc",
+      "text_tr": "Sevgilin eski sevgilisine yardım etse?",
+      "text_en": "If your partner helps their ex?",
+      "answer_type": "binary",
+      "options": ["Kıskanırım", "Kıskanmam"],
+      "premium": false
+    },
+    {
+      "id": "cheat_1",
+      "category": "aldatma",
+      "text_tr": "Başkasına aşık olmak ama hiç bir şey yapmamak?",
+      "text_en": "Falling in love with someone else but not acting on it?",
+      "answer_type": "binary",
+      "options": ["Aldatma", "Değil"],
+      "premium": false
+    },
+    {
+      "id": "cheat_2",
+      "category": "aldatma",
+      "text_tr": "Yabancı biriyle flört etmek?",
+      "text_en": "Flirting with a stranger?",
+      "answer_type": "binary",
+      "options": ["Aldatma", "Değil"],
+      "premium": false
+    },
+    {
+      "id": "cheat_3",
+      "category": "aldatma",
+      "text_tr": "Eski sevgiliyle duygusal konuşmalar yapmak?",
+      "text_en": "Having emotional conversations with an ex?",
+      "answer_type": "binary",
+      "options": ["Aldatma", "Değil"],
+      "premium": false
+    },
+    {
+      "id": "cheat_4",
+      "category": "aldatma",
+      "text_tr": "Dating uygulaması kullanmak ama kimseyle buluşmamak?",
+      "text_en": "Using dating apps but not meeting anyone?",
+      "answer_type": "binary",
+      "options": ["Aldatma", "Değil"],
+      "premium": false
+    },
+    {
+      "id": "cheat_5",
+      "category": "aldatma",
+      "text_tr": "Başkasıyla öpüşmek?",
+      "text_en": "Kissing someone else?",
+      "answer_type": "binary",
+      "options": ["Aldatma", "Değil"],
+      "premium": false
+    },
+    {
+      "id": "cheat_6",
+      "category": "aldatma",
+      "text_tr": "Başkasına cinsel içerikli mesajlar atmak?",
+      "text_en": "Sending sexual messages to someone else?",
+      "answer_type": "binary",
+      "options": ["Aldatma", "Değil"],
+      "premium": false
+    },
+    {
+      "id": "cheat_7",
+      "category": "aldatma",
+      "text_tr": "Porno izlemek?",
+      "text_en": "Watching porn?",
+      "answer_type": "binary",
+      "options": ["Aldatma", "Değil"],
+      "premium": false
+    },
+    {
+      "id": "cheat_8",
+      "category": "aldatma",
+      "text_tr": "Strip club'a gitmek?",
+      "text_en": "Going to a strip club?",
+      "answer_type": "binary",
+      "options": ["Aldatma", "Değil"],
+      "premium": false
+    },
+    {
+      "id": "cheat_9",
+      "category": "aldatma",
+      "text_tr": "Eski sevgiliye hala 'aşkım' diye hitap etmek?",
+      "text_en": "Still calling ex 'my love'?",
+      "answer_type": "binary",
+      "options": ["Aldatma", "Değil"],
+      "premium": false
+    },
+    {
+      "id": "cheat_10",
+      "category": "aldatma",
+      "text_tr": "İlişkini başkalarından gizlemek?",
+      "text_en": "Hiding your relationship from others?",
+      "answer_type": "binary",
+      "options": ["Aldatma", "Değil"],
+      "premium": true
+    },
+    {
+      "id": "cheat_11",
+      "category": "aldatma",
+      "text_tr": "Gizli bir sosyal medya hesabı olması?",
+      "text_en": "Having a secret social media account?",
+      "answer_type": "binary",
+      "options": ["Aldatma", "Değil"],
+      "premium": false
+    },
+    {
+      "id": "cheat_12",
+      "category": "aldatma",
+      "text_tr": "Başkasıyla dans etmek?",
+      "text_en": "Dancing with someone else?",
+      "answer_type": "binary",
+      "options": ["Aldatma", "Değil"],
+      "premium": false
+    },
+    {
+      "id": "cheat_13",
+      "category": "aldatma",
+      "text_tr": "Başkasının numarasını kaydetmek?",
+      "text_en": "Saving someone else's number?",
+      "answer_type": "binary",
+      "options": ["Aldatma", "Değil"],
+      "premium": false
+    },
+    {
+      "id": "cheat_14",
+      "category": "aldatma",
+      "text_tr": "İlişki danışmanı gibi gidip başkalarıyla sorunlarını paylaşmak?",
+      "text_en": "Sharing relationship problems with others?",
+      "answer_type": "binary",
+      "options": ["Aldatma", "Değil"],
+      "premium": false
+    },
+    {
+      "id": "cheat_15",
+      "category": "aldatma",
+      "text_tr": "Fantezi kurmak ama gerçekleştirmemek?",
+      "text_en": "Having fantasies but not acting on them?",
+      "answer_type": "binary",
+      "options": ["Aldatma", "Değil"],
+      "premium": false
+    },
+    {
+      "id": "cheat_16",
+      "category": "aldatma",
+      "text_tr": "Sevgiline yalan söylemek?",
+      "text_en": "Lying to your partner?",
+      "answer_type": "binary",
+      "options": ["Aldatma", "Değil"],
+      "premium": false
+    },
+    {
+      "id": "cheat_17",
+      "category": "aldatma",
+      "text_tr": "Başkasını kıskandırmak için flört etmek?",
+      "text_en": "Flirting to make someone jealous?",
+      "answer_type": "binary",
+      "options": ["Aldatma", "Değil"],
+      "premium": false
+    },
+    {
+      "id": "cheat_18",
+      "category": "aldatma",
+      "text_tr": "Online sohbet odalarında tanımadığın insanlarla konuşmak?",
+      "text_en": "Chatting with strangers in online chat rooms?",
+      "answer_type": "binary",
+      "options": ["Aldatma", "Değil"],
+      "premium": false
+    },
+    {
+      "id": "cheat_19",
+      "category": "aldatma",
+      "text_tr": "Başka birine romantik hediye almak?",
+      "text_en": "Buying romantic gifts for someone else?",
+      "answer_type": "binary",
+      "options": ["Aldatma", "Değil"],
+      "premium": false
+    },
+    {
+      "id": "cheat_20",
+      "category": "aldatma",
+      "text_tr": "Sarhoşken başkasıyla öpüşmek?",
+      "text_en": "Kissing someone else while drunk?",
+      "answer_type": "binary",
+      "options": ["Aldatma", "Değil"],
+      "premium": false
+    },
+    {
+      "id": "can_1",
+      "category": "sevgilim_yapabilir",
+      "text_tr": "Sevgilin karşı cinsten arkadaşlarıyla tatile gidebilir mi?",
+      "text_en": "Can your partner go on vacation with friends of opposite sex?",
+      "answer_type": "binary",
+      "options": ["Yapabilir", "Yapamaz"],
+      "premium": false
+    },
+    {
+      "id": "can_2",
+      "category": "sevgilim_yapabilir",
+      "text_tr": "Sevgilin başkasının evinde yatabilir mi?",
+      "text_en": "Can your partner sleep at someone else's house?",
+      "answer_type": "binary",
+      "options": ["Yapabilir", "Yapamaz"],
+      "premium": false
+    },
+    {
+      "id": "can_3",
+      "category": "sevgilim_yapabilir",
+      "text_tr": "Sevgilin seninle kavga ettikten sonra ailesine anlatabilir mi?",
+      "text_en": "Can your partner tell their family after a fight with you?",
+      "answer_type": "binary",
+      "options": ["Yapabilir", "Yapamaz"],
+      "premium": false
+    },
+    {
+      "id": "can_4",
+      "category": "sevgilim_yapabilir",
+      "text_tr": "Sevgilin strip club'a gidebilir mi?",
+      "text_en": "Can your partner go to a strip club?",
+      "answer_type": "binary",
+      "options": ["Yapabilir", "Yapamaz"],
+      "premium": false
+    },
+    {
+      "id": "can_5",
+      "category": "sevgilim_yapabilir",
+      "text_tr": "Sevgilin senin sosyal medya şifrelerini bilmek isteyebilir mi?",
+      "text_en": "Can your partner ask for your social media passwords?",
+      "answer_type": "binary",
+      "options": ["Yapabilir", "Yapamaz"],
+      "premium": false
+    },
+    {
+      "id": "can_6",
+      "category": "sevgilim_yapabilir",
+      "text_tr": "Sevgilin seninle plan yapmadan dışarı çıkabilir mi?",
+      "text_en": "Can your partner go out without making plans with you?",
+      "answer_type": "binary",
+      "options": ["Yapabilir", "Yapamaz"],
+      "premium": false
+    },
+    {
+      "id": "can_7",
+      "category": "sevgilim_yapabilir",
+      "text_tr": "Sevgilin senin onayın olmadan iş değiştirebilir mi?",
+      "text_en": "Can your partner change jobs without your approval?",
+      "answer_type": "binary",
+      "options": ["Yapabilir", "Yapamaz"],
+      "premium": false
+    },
+    {
+      "id": "can_8",
+      "category": "sevgilim_yapabilir",
+      "text_tr": "Sevgilin eski sevgilisiyle görüşebilir mi?",
+      "text_en": "Can your partner meet with their ex?",
+      "answer_type": "binary",
+      "options": ["Yapabilir", "Yapamaz"],
+      "premium": false
+    },
+    {
+      "id": "can_9",
+      "category": "sevgilim_yapabilir",
+      "text_tr": "Sevgilin yalnız başına başka şehre taşınabilir mi?",
+      "text_en": "Can your partner move to another city alone?",
+      "answer_type": "binary",
+      "options": ["Yapabilir", "Yapamaz"],
+      "premium": false
+    },
+    {
+      "id": "can_10",
+      "category": "sevgilim_yapabilir",
+      "text_tr": "Sevgilin senin arkadaşlarınla takılabilir mi?",
+      "text_en": "Can your partner hang out with your friends?",
+      "answer_type": "binary",
+      "options": ["Yapabilir", "Yapamaz"],
+      "premium": true
+    },
+    {
+      "id": "can_11",
+      "category": "sevgilim_yapabilir",
+      "text_tr": "Sevgilin senin onayın olmadan pahalı bir şey alabilir mi?",
+      "text_en": "Can your partner buy something expensive without your approval?",
+      "answer_type": "binary",
+      "options": ["Yapabilir", "Yapamaz"],
+      "premium": false
+    },
+    {
+      "id": "can_12",
+      "category": "sevgilim_yapabilir",
+      "text_tr": "Sevgilin senin yanında başkasına iltifat edebilir mi?",
+      "text_en": "Can your partner compliment someone else in front of you?",
+      "answer_type": "binary",
+      "options": ["Yapabilir", "Yapamaz"],
+      "premium": false
+    },
+    {
+      "id": "can_13",
+      "category": "sevgilim_yapabilir",
+      "text_tr": "Sevgilin senden önce yatabilir mi?",
+      "text_en": "Can your partner go to bed before you?",
+      "answer_type": "binary",
+      "options": ["Yapabilir", "Yapamaz"],
+      "premium": false
+    },
+    {
+      "id": "can_14",
+      "category": "sevgilim_yapabilir",
+      "text_tr": "Sevgilin bekarlığa veda partisine gidebilir mi?",
+      "text_en": "Can your partner go to a bachelor/bachelorette party?",
+      "answer_type": "binary",
+      "options": ["Yapabilir", "Yapamaz"],
+      "premium": false
+    },
+    {
+      "id": "can_15",
+      "category": "sevgilim_yapabilir",
+      "text_tr": "Sevgilin senin kıyafetlerine karışabilir mi?",
+      "text_en": "Can your partner have a say in your clothes?",
+      "answer_type": "binary",
+      "options": ["Yapabilir", "Yapamaz"],
+      "premium": false
+    },
+    {
+      "id": "can_16",
+      "category": "sevgilim_yapabilir",
+      "text_tr": "Sevgilin hobisi için senden çok zaman ayırabilir mi?",
+      "text_en": "Can your partner spend more time on hobbies than with you?",
+      "answer_type": "binary",
+      "options": ["Yapabilir", "Yapamaz"],
+      "premium": false
+    },
+    {
+      "id": "can_17",
+      "category": "sevgilim_yapabilir",
+      "text_tr": "Sevgilin seninle konuşmadan ailesine para gönderebilir mi?",
+      "text_en": "Can your partner send money to family without telling you?",
+      "answer_type": "binary",
+      "options": ["Yapabilir", "Yapamaz"],
+      "premium": false
+    },
+    {
+      "id": "can_18",
+      "category": "sevgilim_yapabilir",
+      "text_tr": "Sevgilin eski sevgilisinin hediyelerini saklayabilir mi?",
+      "text_en": "Can your partner keep gifts from ex?",
+      "answer_type": "binary",
+      "options": ["Yapabilir", "Yapamaz"],
+      "premium": false
+    },
+    {
+      "id": "can_19",
+      "category": "sevgilim_yapabilir",
+      "text_tr": "Sevgilin seninle tartışırken sesini yükseltebilir mi?",
+      "text_en": "Can your partner raise their voice during an argument?",
+      "answer_type": "binary",
+      "options": ["Yapabilir", "Yapamaz"],
+      "premium": false
+    },
+    {
+      "id": "can_20",
+      "category": "sevgilim_yapabilir",
+      "text_tr": "Sevgilin senin ailene karşı çıkabilir mi?",
+      "text_en": "Can your partner disagree with your family?",
+      "answer_type": "binary",
+      "options": ["Yapabilir", "Yapamaz"],
+      "premium": false
+    },
+    {
+      "id": "anger_1",
+      "category": "kac_kizarsin",
+      "text_tr": "Sevgilin sana 3 saat cevap vermese?",
+      "text_en": "If your partner doesn't reply for 3 hours?",
+      "answer_type": "rating",
+      "min": 1,
+      "max": 10,
+      "premium": false
+    },
+    {
+      "id": "anger_2",
+      "category": "kac_kizarsin",
+      "text_tr": "Sevgilin seninle planını son dakika iptal etse?",
+      "text_en": "If your partner cancels plans at the last minute?",
+      "answer_type": "rating",
+      "min": 1,
+      "max": 10,
+      "premium": false
+    },
+    {
+      "id": "anger_3",
+      "category": "kac_kizarsin",
+      "text_tr": "Sevgilin eski sevgilisinden bahsetse?",
+      "text_en": "If your partner talks about their ex?",
+      "answer_type": "rating",
+      "min": 1,
+      "max": 10,
+      "premium": false
+    },
+    {
+      "id": "anger_4",
+      "category": "kac_kizarsin",
+      "text_tr": "Sevgilin seni arkadaşlarının yanında utandırsa?",
+      "text_en": "If your partner embarrasses you in front of friends?",
+      "answer_type": "rating",
+      "min": 1,
+      "max": 10,
+      "premium": false
+    },
+    {
+      "id": "anger_5",
+      "category": "kac_kizarsin",
+      "text_tr": "Sevgilin yıldönümünüzü unutsa?",
+      "text_en": "If your partner forgets your anniversary?",
+      "answer_type": "rating",
+      "min": 1,
+      "max": 10,
+      "premium": false
+    },
+    {
+      "id": "anger_6",
+      "category": "kac_kizarsin",
+      "text_tr": "Sevgilin seninle tartışırken ağlarsa?",
+      "text_en": "If your partner cries during an argument?",
+      "answer_type": "rating",
+      "min": 1,
+      "max": 10,
+      "premium": false
+    },
+    {
+      "id": "anger_7",
+      "category": "kac_kizarsin",
+      "text_tr": "Sevgilin seni telefonla konuşurken görmeyi tercih etmese?",
+      "text_en": "If your partner prefers phone calls over seeing you?",
+      "answer_type": "rating",
+      "min": 1,
+      "max": 10,
+      "premium": false
+    },
+    {
+      "id": "anger_8",
+      "category": "kac_kizarsin",
+      "text_tr": "Sevgilin seninle paylaşmadan büyük bir karar verse?",
+      "text_en": "If your partner makes a big decision without sharing?",
+      "answer_type": "rating",
+      "min": 1,
+      "max": 10,
+      "premium": false
+    },
+    {
+      "id": "anger_9",
+      "category": "kac_kizarsin",
+      "text_tr": "Sevgilin seninle ilgili özel bir şeyi başkalarına anlatsa?",
+      "text_en": "If your partner tells others something private about you?",
+      "answer_type": "rating",
+      "min": 1,
+      "max": 10,
+      "premium": false
+    },
+    {
+      "id": "anger_10",
+      "category": "kac_kizarsin",
+      "text_tr": "Sevgilin seni ailesine tanıtmasa?",
+      "text_en": "If your partner doesn't introduce you to family?",
+      "answer_type": "rating",
+      "min": 1,
+      "max": 10,
+      "premium": true
+    },
+    {
+      "id": "anger_11",
+      "category": "kac_kizarsin",
+      "text_tr": "Sevgilin yalan söyleyip yakalanırsa?",
+      "text_en": "If your partner lies and gets caught?",
+      "answer_type": "rating",
+      "min": 1,
+      "max": 10,
+      "premium": false
+    },
+    {
+      "id": "anger_12",
+      "category": "kac_kizarsin",
+      "text_tr": "Sevgilin senin doğum günün kutlamasa?",
+      "text_en": "If your partner doesn't celebrate your birthday?",
+      "answer_type": "rating",
+      "min": 1,
+      "max": 10,
+      "premium": false
+    },
+    {
+      "id": "anger_13",
+      "category": "kac_kizarsin",
+      "text_tr": "Sevgilin seninle kavgalıyken sosyal medyada mutlu görünürse?",
+      "text_en": "If your partner appears happy on social media while fighting with you?",
+      "answer_type": "rating",
+      "min": 1,
+      "max": 10,
+      "premium": false
+    },
+    {
+      "id": "anger_14",
+      "category": "kac_kizarsin",
+      "text_tr": "Sevgilin seni ailesine önemsiz biri gibi tanıtırsa?",
+      "text_en": "If your partner introduces you as 'just a friend' to family?",
+      "answer_type": "rating",
+      "min": 1,
+      "max": 10,
+      "premium": false
+    },
+    {
+      "id": "anger_15",
+      "category": "kac_kizarsin",
+      "text_tr": "Sevgilin eski sevgilisiyle hala konuşursa?",
+      "text_en": "If your partner still talks with their ex?",
+      "answer_type": "rating",
+      "min": 1,
+      "max": 10,
+      "premium": false
+    },
+    {
+      "id": "anger_16",
+      "category": "kac_kizarsin",
+      "text_tr": "Sevgilin sana verdiği sözü tutmazsa?",
+      "text_en": "If your partner breaks a promise?",
+      "answer_type": "rating",
+      "min": 1,
+      "max": 10,
+      "premium": false
+    },
+    {
+      "id": "anger_17",
+      "category": "kac_kizarsin",
+      "text_tr": "Sevgilin senin hoşlandığın bir şeyi eleştirse?",
+      "text_en": "If your partner criticizes something you like?",
+      "answer_type": "rating",
+      "min": 1,
+      "max": 10,
+      "premium": false
+    },
+    {
+      "id": "anger_18",
+      "category": "kac_kizarsin",
+      "text_tr": "Sevgilin seni başka biriyle karşılaştırsa?",
+      "text_en": "If your partner compares you with someone else?",
+      "answer_type": "rating",
+      "min": 1,
+      "max": 10,
+      "premium": false
+    },
+    {
+      "id": "anger_19",
+      "category": "kac_kizarsin",
+      "text_tr": "Sevgilin senin fikrini sormadan önemli bir şey yapsa?",
+      "text_en": "If your partner does something important without asking your opinion?",
+      "answer_type": "rating",
+      "min": 1,
+      "max": 10,
+      "premium": false
+    },
+    {
+      "id": "anger_20",
+      "category": "kac_kizarsin",
+      "text_tr": "Sevgilin telefonunu sürekli gizlese?",
+      "text_en": "If your partner constantly hides their phone?",
+      "answer_type": "rating",
+      "min": 1,
+      "max": 10,
+      "premium": false
+    }
+  ],
+  "categories": {
+    "ok_not_ok": {
+      "name_tr": "OK mu NOT OK mu?",
+      "emoji": "🔥",
+      "color": "#FF6B6B"
+    },
+    "kiskanc": {
+      "name_tr": "Ne Kadar Kıskanç?",
+      "emoji": "😤",
+      "color": "#9B59B6"
+    },
+    "aldatma": {
+      "name_tr": "Aldatma mı Değil mi?",
+      "emoji": "💔",
+      "color": "#E74C3C"
+    },
+    "sevgilim_yapabilir": {
+      "name_tr": "Sevgilim Yapabilir mi?",
+      "emoji": "❓",
+      "color": "#3498DB"
+    },
+    "kac_kizarsin": {
+      "name_tr": "Kaç Kızarsın?",
+      "emoji": "😡",
+      "color": "#E67E22"
+    }
+  }
+}
