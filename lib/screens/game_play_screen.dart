@@ -359,7 +359,7 @@ class _GamePlayScreenState extends State<GamePlayScreen> {
           ),
         ),
       ),
-    ).animate().fadeIn(duration: 200.ms);
+    ).animate().fadeIn(duration: const Duration(milliseconds: 200));
   }
 
   void _showExitDialog() {

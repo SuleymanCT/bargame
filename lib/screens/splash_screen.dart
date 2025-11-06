@@ -56,16 +56,16 @@ class _SplashScreenState extends State<SplashScreen> {
               const Spacer(flex: 2),
 
               // Halley Avatar - Duolingo tarzı büyük karakter
-              HalleyAvatar(
+              const HalleyAvatar(
                 mood: HalleyMood.happy,
                 size: 220,
               )
                   .animate()
                   .scale(
-                    duration: 600.ms,
+                    duration: Duration(milliseconds: 600),
                     curve: Curves.elasticOut,
                   )
-                  .fadeIn(duration: 400.ms),
+                  .fadeIn(duration: Duration(milliseconds: 400)),
 
               const SizedBox(height: 50),
 
@@ -87,7 +87,7 @@ class _SplashScreenState extends State<SplashScreen> {
                 ),
               )
                   .animate()
-                  .fadeIn(delay: 300.ms, duration: 600.ms)
+                  .fadeIn(delay: const Duration(milliseconds: 300), duration: const Duration(milliseconds: 600))
                   .slideY(begin: 0.2, end: 0, curve: Curves.easeOut),
 
               const SizedBox(height: 12),
@@ -99,18 +99,19 @@ class _SplashScreenState extends State<SplashScreen> {
                   color: Colors.white.withOpacity(0.2),
                   borderRadius: BorderRadius.circular(20),
                 ),
-                child: Text(
+                child: const Text(
                   'Ok? Nok?',
-                  style: AppTheme.textTheme.headlineSmall?.copyWith(
+                  style: TextStyle(
                     color: Colors.white,
                     fontWeight: FontWeight.w700,
                     letterSpacing: 2,
+                    fontSize: 24,
                   ),
                 ),
               )
                   .animate()
-                  .fadeIn(delay: 500.ms, duration: 600.ms)
-                  .scale(delay: 500.ms, duration: 400.ms),
+                  .fadeIn(delay: const Duration(milliseconds: 500), duration: const Duration(milliseconds: 600))
+                  .scale(delay: const Duration(milliseconds: 500), duration: const Duration(milliseconds: 400)),
 
               const Spacer(flex: 2),
 
@@ -129,19 +130,20 @@ class _SplashScreenState extends State<SplashScreen> {
                     ),
                   )
                       .animate(onPlay: (controller) => controller.repeat())
-                      .fadeIn(delay: 800.ms),
+                      .fadeIn(delay: const Duration(milliseconds: 800)),
 
                   const SizedBox(height: 16),
 
                   Text(
                     'Yükleniyor...',
-                    style: AppTheme.textTheme.bodyMedium?.copyWith(
+                    style: TextStyle(
                       color: Colors.white.withOpacity(0.9),
                       fontWeight: FontWeight.w600,
+                      fontSize: 16,
                     ),
                   )
                       .animate()
-                      .fadeIn(delay: 1000.ms),
+                      .fadeIn(delay: const Duration(milliseconds: 1000)),
                 ],
               ),
 

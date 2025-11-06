@@ -54,7 +54,7 @@ class HomeScreen extends StatelessWidget {
                                   const Rect.fromLTWH(0, 0, 300, 100),
                                 ),
                             ),
-                          ).animate().fadeIn(delay: 200.ms),
+                          ).animate().fadeIn(delay: const Duration(milliseconds: 200)),
                           
                           const SizedBox(height: 8),
                           
@@ -64,7 +64,7 @@ class HomeScreen extends StatelessWidget {
                               color: AppTheme.textSecondary,
                               letterSpacing: 3,
                             ),
-                          ).animate().fadeIn(delay: 300.ms),
+                          ).animate().fadeIn(delay: const Duration(milliseconds: 300)),
                           
                           const SizedBox(height: 50),
                           
@@ -86,7 +86,7 @@ class HomeScreen extends StatelessWidget {
                                 ),
                               );
                             },
-                          ).animate().fadeIn(delay: 400.ms).slideX(begin: -0.2),
+                          ).animate().fadeIn(delay: const Duration(milliseconds: 400)).slideX(begin: -0.2),
                           
                           const SizedBox(height: 16),
                           
@@ -105,7 +105,7 @@ class HomeScreen extends StatelessWidget {
                                 ),
                               );
                             },
-                          ).animate().fadeIn(delay: 500.ms).slideX(begin: -0.2),
+                          ).animate().fadeIn(delay: const Duration(milliseconds: 500)).slideX(begin: -0.2),
                           
                           const SizedBox(height: 16),
                           
@@ -137,7 +137,7 @@ class HomeScreen extends StatelessWidget {
                                 ),
                               );
                             },
-                          ).animate().fadeIn(delay: 600.ms).slideX(begin: -0.2),
+                          ).animate().fadeIn(delay: const Duration(milliseconds: 600)).slideX(begin: -0.2),
                         ],
                       ),
                     ),
@@ -152,7 +152,7 @@ class HomeScreen extends StatelessWidget {
                         color: AppTheme.textTertiary,
                       ),
                     ),
-                  ).animate().fadeIn(delay: 700.ms),
+                  ).animate().fadeIn(delay: const Duration(milliseconds: 700)),
                 ],
               ),
             ),
