@@ -143,7 +143,7 @@ class _BasketSetupScreenState extends State<BasketSetupScreen> {
                       ),
                       decoration: BoxDecoration(
                         gradient: const LinearGradient(
-                          colors: [Color(0xFFFFD700), Color(0xFFFFA500)],
+                          colors: [AppTheme.primaryYellow, AppTheme.primaryOrange],
                         ),
                         borderRadius: BorderRadius.circular(8),
                       ),
@@ -416,7 +416,7 @@ class _BasketSetupScreenState extends State<BasketSetupScreen> {
             style: ElevatedButton.styleFrom(
               backgroundColor: _isPremium
                   ? AppTheme.primaryColor
-                  : Colors.amber,
+                  : AppTheme.primaryOrange,
             ),
           ),
         ).animate(delay: 500.ms).fadeIn().slideY(begin: 0.3),

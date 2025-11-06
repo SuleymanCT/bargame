@@ -35,8 +35,8 @@ class AppTheme {
   // Category Colors (Brand palette)
   static const okNotOkColor = primaryYellow;
   static const jealousColor = primaryOrange;
-  static const cheatingColor = Color(0xFFE57373);
-  static const canDoColor = Color(0xFF64B5F6);
+  static const cheatingColor = primaryOrange;
+  static const canDoColor = primaryYellow;
   static const angerColor = primaryOrange;
   
   // Gradients

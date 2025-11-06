@@ -77,9 +77,7 @@ class HomeScreen extends StatelessWidget {
                               'Klasik mod',
                               'Classic mode',
                             ),
-                            gradient: const LinearGradient(
-                              colors: [Color(0xFF4CAF50), Color(0xFF45A049)],
-                            ),
+                            gradient: AppTheme.primaryGradient,
                             onTap: () {
                               Navigator.push(
                                 context,
