@@ -30,7 +30,7 @@ class _SplashScreenState extends State<SplashScreen> with TickerProviderStateMix
 
     // Avatar animasyonu
     _avatarController = AnimationController(
-      duration: const Duration(milliseconds: 600),
+      duration: const Duration(milliseconds: 800),
       vsync: this,
     );
     _avatarScaleAnimation = CurvedAnimation(
@@ -39,38 +39,38 @@ class _SplashScreenState extends State<SplashScreen> with TickerProviderStateMix
     );
     _avatarFadeAnimation = CurvedAnimation(
       parent: _avatarController,
-      curve: const Interval(0.0, 0.7, curve: Curves.easeIn),
+      curve: const Interval(0.0, 0.8, curve: Curves.easeInOut),
     );
 
     // Title animasyonu
     _titleController = AnimationController(
-      duration: const Duration(milliseconds: 600),
+      duration: const Duration(milliseconds: 700),
       vsync: this,
     );
     _titleFadeAnimation = CurvedAnimation(
       parent: _titleController,
-      curve: Curves.easeIn,
+      curve: Curves.easeInOut,
     );
     _titleSlideAnimation = Tween<Offset>(
-      begin: const Offset(0, 0.2),
+      begin: const Offset(0, 0.3),
       end: Offset.zero,
     ).animate(CurvedAnimation(
       parent: _titleController,
-      curve: Curves.easeOut,
+      curve: Curves.easeOutBack,
     ));
 
     // Subtitle animasyonu
     _subtitleController = AnimationController(
-      duration: const Duration(milliseconds: 600),
+      duration: const Duration(milliseconds: 700),
       vsync: this,
     );
     _subtitleFadeAnimation = CurvedAnimation(
       parent: _subtitleController,
-      curve: Curves.easeIn,
+      curve: Curves.easeInOut,
     );
     _subtitleScaleAnimation = CurvedAnimation(
       parent: _subtitleController,
-      curve: Curves.easeOut,
+      curve: Curves.easeOutBack,
     );
 
     // Loading animasyonu
@@ -89,12 +89,13 @@ class _SplashScreenState extends State<SplashScreen> with TickerProviderStateMix
   }
 
   void _startAnimations() async {
-    _avatarController.forward();
-    await Future.delayed(const Duration(milliseconds: 300));
-    _titleController.forward();
     await Future.delayed(const Duration(milliseconds: 200));
-    _subtitleController.forward();
+    _avatarController.forward();
+    await Future.delayed(const Duration(milliseconds: 400));
+    _titleController.forward();
     await Future.delayed(const Duration(milliseconds: 300));
+    _subtitleController.forward();
+    await Future.delayed(const Duration(milliseconds: 400));
     _loadingController.forward();
   }
 
@@ -108,15 +109,28 @@ class _SplashScreenState extends State<SplashScreen> with TickerProviderStateMix
   }
 
   Future<void> _navigateToHome() async {
-    await Future.delayed(const Duration(seconds: 3));
+    await Future.delayed(const Duration(milliseconds: 3200));
     if (mounted) {
       Navigator.of(context).pushReplacement(
         PageRouteBuilder(
           pageBuilder: (context, animation, secondaryAnimation) => const HomeScreen(),
           transitionsBuilder: (context, animation, secondaryAnimation, child) {
-            return FadeTransition(opacity: animation, child: child);
+            const begin = Offset(0.0, 0.1);
+            const end = Offset.zero;
+            const curve = Curves.easeInOut;
+
+            var tween = Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
+            var offsetAnimation = animation.drive(tween);
+
+            return SlideTransition(
+              position: offsetAnimation,
+              child: FadeTransition(
+                opacity: animation,
+                child: child,
+              ),
+            );
           },
-          transitionDuration: const Duration(milliseconds: 500),
+          transitionDuration: const Duration(milliseconds: 800),
         ),
       );
     }

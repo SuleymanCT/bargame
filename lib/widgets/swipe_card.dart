@@ -118,19 +118,19 @@ class SwipeCard extends StatelessWidget {
                   const SizedBox(height: 20),
                   
                   // Swipe hint
-                  if (question.isBinary)
+                  if (question.isBinary && question.options != null && question.options!.length == 2)
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
                         _buildSwipeHint(
                           Icons.close,
-                          language == 'tr' ? 'NOT OK' : 'NOT OK',
+                          question.options![1], // Sol taraf (NOT OK, Kıskanmam, Değil, Yapamaz)
                           AppTheme.errorColor,
                           Icons.arrow_back,
                         ),
                         _buildSwipeHint(
                           Icons.check,
-                          language == 'tr' ? 'OK' : 'OK',
+                          question.options![0], // Sağ taraf (OK, Kıskanırım, Aldatma, Yapabilir)
                           AppTheme.successColor,
                           Icons.arrow_forward,
                         ),
