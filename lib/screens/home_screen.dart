@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_animate/flutter_animate.dart';
 import 'package:provider/provider.dart';
 import '../config/app_theme.dart';
 import '../services/language_service.dart';
@@ -54,17 +53,17 @@ class HomeScreen extends StatelessWidget {
                                   const Rect.fromLTWH(0, 0, 300, 100),
                                 ),
                             ),
-                          ).animate().fadeIn(delay: 200.ms),
-                          
+                          ),
+
                           const SizedBox(height: 8),
-                          
+
                           Text(
                             'Ok? Nok?',
                             style: AppTheme.textTheme.headlineMedium?.copyWith(
                               color: AppTheme.textSecondary,
                               letterSpacing: 3,
                             ),
-                          ).animate().fadeIn(delay: 300.ms),
+                          ),
                           
                           const SizedBox(height: 50),
                           
@@ -86,10 +85,10 @@ class HomeScreen extends StatelessWidget {
                                 ),
                               );
                             },
-                          ).animate().fadeIn(delay: 400.ms).slideX(begin: -0.2),
-                          
+                          ),
+
                           const SizedBox(height: 16),
-                          
+
                           _buildMenuButton(
                             context,
                             icon: Icons.shopping_basket,
@@ -105,10 +104,10 @@ class HomeScreen extends StatelessWidget {
                                 ),
                               );
                             },
-                          ).animate().fadeIn(delay: 500.ms).slideX(begin: -0.2),
-                          
+                          ),
+
                           const SizedBox(height: 16),
-                          
+
                           _buildMenuButton(
                             context,
                             icon: Icons.settings_rounded,
@@ -137,7 +136,7 @@ class HomeScreen extends StatelessWidget {
                                 ),
                               );
                             },
-                          ).animate().fadeIn(delay: 600.ms).slideX(begin: -0.2),
+                          ),
                         ],
                       ),
                     ),
@@ -152,7 +151,7 @@ class HomeScreen extends StatelessWidget {
                         color: AppTheme.textTertiary,
                       ),
                     ),
-                  ).animate().fadeIn(delay: 700.ms),
+                  ),
                 ],
               ),
             ),

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_animate/flutter_animate.dart';
 import 'package:provider/provider.dart';
 import '../config/app_theme.dart';
 import '../models/player.dart';
@@ -276,10 +275,7 @@ class _CategorySelectionScreenState extends State<CategorySelectionScreen> {
                                 ],
                               ),
                             ),
-                          )
-                              .animate(delay: (100 * index).ms)
-                              .fadeIn()
-                              .slideX(begin: -0.2),
+                          ),
                         );
                       },
                     ),
@@ -309,7 +305,7 @@ class _CategorySelectionScreenState extends State<CategorySelectionScreen> {
                           backgroundColor: AppTheme.primaryColor,
                         ),
                       ),
-                    ).animate(delay: 600.ms).fadeIn().slideY(begin: 0.3),
+                    ),
                   ),
                 ],
               ),

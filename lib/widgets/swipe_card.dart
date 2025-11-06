@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_animate/flutter_animate.dart';
 import '../models/question.dart';
 import '../config/app_theme.dart';
 import 'halley_avatar.dart';
@@ -143,10 +142,7 @@ class SwipeCard extends StatelessWidget {
           ],
         ),
       ),
-    )
-        .animate()
-        .fadeIn(duration: 300.ms)
-        .scale(begin: const Offset(0.9, 0.9), duration: 300.ms);
+    );
   }
 
   Widget _buildSwipeHint(
