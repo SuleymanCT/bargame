@@ -54,7 +54,7 @@ class HomeScreen extends StatelessWidget {
                                   const Rect.fromLTWH(0, 0, 300, 100),
                                 ),
                             ),
-                          ).animate().fadeIn(delay: const Duration(milliseconds: 200)),
+                          ).animate().fadeIn(delay: 200.ms),
                           
                           const SizedBox(height: 8),
                           
@@ -64,7 +64,7 @@ class HomeScreen extends StatelessWidget {
                               color: AppTheme.textSecondary,
                               letterSpacing: 3,
                             ),
-                          ).animate().fadeIn(delay: const Duration(milliseconds: 300)),
+                          ).animate().fadeIn(delay: 300.ms),
                           
                           const SizedBox(height: 50),
                           
@@ -86,7 +86,7 @@ class HomeScreen extends StatelessWidget {
                                 ),
                               );
                             },
-                          ).animate().fadeIn(delay: const Duration(milliseconds: 400)).slideX(begin: -0.2),
+                          ).animate().fadeIn(delay: 400.ms).slideX(begin: -0.2),
                           
                           const SizedBox(height: 16),
                           
@@ -105,7 +105,7 @@ class HomeScreen extends StatelessWidget {
                                 ),
                               );
                             },
-                          ).animate().fadeIn(delay: const Duration(milliseconds: 500)).slideX(begin: -0.2),
+                          ).animate().fadeIn(delay: 500.ms).slideX(begin: -0.2),
                           
                           const SizedBox(height: 16),
                           
@@ -137,7 +137,7 @@ class HomeScreen extends StatelessWidget {
                                 ),
                               );
                             },
-                          ).animate().fadeIn(delay: const Duration(milliseconds: 600)).slideX(begin: -0.2),
+                          ).animate().fadeIn(delay: 600.ms).slideX(begin: -0.2),
                         ],
                       ),
                     ),
@@ -152,7 +152,7 @@ class HomeScreen extends StatelessWidget {
                         color: AppTheme.textTertiary,
                       ),
                     ),
-                  ).animate().fadeIn(delay: const Duration(milliseconds: 700)),
+                  ).animate().fadeIn(delay: 700.ms),
                 ],
               ),
             ),
@@ -222,116 +222,70 @@ class HomeScreen extends StatelessWidget {
     required VoidCallback onTap,
     bool isPremium = false,
   }) {
-    return TweenAnimationBuilder<double>(
-      tween: Tween(begin: 1.0, end: 1.0),
-      duration: const Duration(milliseconds: 100),
-      builder: (context, scale, child) {
-        return GestureDetector(
-          onTapDown: (_) {
-            // Scale down animation başlat
-          },
-          onTapUp: (_) {
-            // Scale up animation başlat
-          },
-          onTapCancel: () {
-            // Scale up animation başlat
-          },
-          onTap: onTap,
-          child: Transform.scale(
-            scale: scale,
-            child: Container(
-              width: double.infinity,
-              padding: const EdgeInsets.all(24), // Duolingo tarzı daha büyük padding
+    return GestureDetector(
+      onTap: onTap,
+      child: Container(
+        width: double.infinity,
+        padding: const EdgeInsets.all(20),
+        decoration: BoxDecoration(
+          gradient: gradient,
+          borderRadius: BorderRadius.circular(20),
+          boxShadow: [
+            BoxShadow(
+              color: gradient.colors.first.withOpacity(0.3),
+              blurRadius: 20,
+              offset: const Offset(0, 8),
+            ),
+          ],
+        ),
+        child: Row(
+          children: [
+            Container(
+              padding: const EdgeInsets.all(14),
               decoration: BoxDecoration(
-                gradient: gradient,
-                borderRadius: BorderRadius.circular(24), // Daha yuvarlak köşeler
-                border: Border.all(
-                  color: Colors.white.withOpacity(0.2),
-                  width: 3, // Kalın border
-                ),
-                boxShadow: [
-                  BoxShadow(
-                    color: gradient.colors.first.withOpacity(0.4),
-                    blurRadius: 24,
-                    offset: const Offset(0, 10),
-                    spreadRadius: 2,
-                  ),
-                  // İkinci shadow katmanı - daha derinlik
-                  BoxShadow(
-                    color: Colors.black.withOpacity(0.3),
-                    blurRadius: 12,
-                    offset: const Offset(0, 4),
-                  ),
-                ],
+                color: Colors.black.withOpacity(0.2),
+                borderRadius: BorderRadius.circular(14),
               ),
-              child: Row(
+              child: Icon(
+                icon,
+                color: Colors.white,
+                size: 28,
+              ),
+            ),
+            
+            const SizedBox(width: 16),
+            
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Container(
-                    padding: const EdgeInsets.all(16),
-                    decoration: BoxDecoration(
-                      color: Colors.white.withOpacity(0.25),
-                      borderRadius: BorderRadius.circular(18),
-                      boxShadow: [
-                        BoxShadow(
-                          color: Colors.black.withOpacity(0.2),
-                          blurRadius: 8,
-                          offset: const Offset(0, 2),
-                        ),
-                      ],
-                    ),
-                    child: Icon(
-                      icon,
+                  Text(
+                    title,
+                    style: AppTheme.textTheme.titleLarge?.copyWith(
                       color: Colors.white,
-                      size: 32, // Daha büyük icon
+                      fontWeight: FontWeight.w700,
                     ),
                   ),
-
-                  const SizedBox(width: 20),
-
-                  Expanded(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          title,
-                          style: AppTheme.textTheme.titleLarge?.copyWith(
-                            color: Colors.white,
-                            fontWeight: FontWeight.w800, // Daha bold
-                            fontSize: 20,
-                            letterSpacing: 0.5,
-                          ),
-                        ),
-                        const SizedBox(height: 4),
-                        Text(
-                          subtitle,
-                          style: AppTheme.textTheme.bodySmall?.copyWith(
-                            color: Colors.white.withOpacity(0.9),
-                            fontSize: 13,
-                            fontWeight: FontWeight.w600,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-
-                  Container(
-                    padding: const EdgeInsets.all(8),
-                    decoration: BoxDecoration(
-                      color: Colors.white.withOpacity(0.2),
-                      shape: BoxShape.circle,
-                    ),
-                    child: Icon(
-                      isPremium ? Icons.workspace_premium : Icons.arrow_forward_rounded,
-                      color: Colors.white,
-                      size: 24,
+                  const SizedBox(height: 2),
+                  Text(
+                    subtitle,
+                    style: AppTheme.textTheme.bodySmall?.copyWith(
+                      color: Colors.white.withOpacity(0.8),
+                      fontSize: 12,
                     ),
                   ),
                 ],
               ),
             ),
-          ),
-        );
-      },
+            
+            Icon(
+              isPremium ? Icons.workspace_premium : Icons.arrow_forward_ios,
+              color: Colors.white,
+              size: 20,
+            ),
+          ],
+        ),
+      ),
     );
   }
 }

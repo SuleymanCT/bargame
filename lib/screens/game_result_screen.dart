@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_animate/flutter_animate.dart';
-import 'package:confetti/confetti.dart';
 import '../services/game_service.dart';
 import '../services/language_service.dart';
 import '../services/personality_service.dart';
@@ -17,24 +16,6 @@ class GameResultScreen extends StatefulWidget {
 }
 
 class _GameResultScreenState extends State<GameResultScreen> {
-  late ConfettiController _confettiController;
-
-  @override
-  void initState() {
-    super.initState();
-    _confettiController = ConfettiController(duration: const Duration(seconds: 3));
-    // Confetti'yi hemen başlat
-    Future.delayed(const Duration(milliseconds: 500), () {
-      _confettiController.play();
-    });
-  }
-
-  @override
-  void dispose() {
-    _confettiController.dispose();
-    super.dispose();
-  }
-
   @override
   Widget build(BuildContext context) {
     return Consumer2<GameService, LanguageService>(
@@ -52,14 +33,12 @@ class _GameResultScreenState extends State<GameResultScreen> {
         final players = session.players;
 
         return Scaffold(
-          body: Stack(
-            children: [
-              Container(
-                decoration: const BoxDecoration(
-                  gradient: AppTheme.darkGradient,
-                ),
-                child: SafeArea(
-                  child: Column(
+          body: Container(
+            decoration: const BoxDecoration(
+              gradient: AppTheme.darkGradient,
+            ),
+            child: SafeArea(
+              child: Column(
                 children: [
                   _buildHeader(langService),
                   
@@ -98,33 +77,11 @@ class _GameResultScreenState extends State<GameResultScreen> {
                     ),
                   ),
                   
-                    _buildBottomButtons(gameService, langService),
-                  ],
-                ),
-              ),
-            ),
-            // Confetti Effect - Duolingo tarzı kutlama
-            Align(
-              alignment: Alignment.topCenter,
-              child: ConfettiWidget(
-                confettiController: _confettiController,
-                blastDirection: 3.14 / 2, // Aşağı doğru
-                maxBlastForce: 5,
-                minBlastForce: 2,
-                emissionFrequency: 0.05,
-                numberOfParticles: 50,
-                gravity: 0.2,
-                colors: const [
-                  AppTheme.halleyYellow,
-                  AppTheme.halleyOrange,
-                  AppTheme.primaryColor,
-                  Colors.white,
-                  Colors.pinkAccent,
-                  Colors.lightBlueAccent,
+                  _buildBottomButtons(gameService, langService),
                 ],
               ),
             ),
-          ],
+          ),
         );
       },
     );
@@ -216,7 +173,7 @@ class _GameResultScreenState extends State<GameResultScreen> {
           ),
         ],
       ),
-    ).animate(delay: const Duration(milliseconds: 200)).fadeIn().slideY(begin: 0.2);
+    ).animate(delay: 200.ms).fadeIn().slideY(begin: 0.2);
   }
 
   Widget _buildStatItem({
@@ -422,7 +379,7 @@ class _GameResultScreenState extends State<GameResultScreen> {
           ],
         ],
       ),
-    ).animate(delay: Duration(milliseconds: 300 + 100 * index)).fadeIn().slideX(begin: -0.2);
+    ).animate(delay: (300 + 100 * index).ms).fadeIn().slideX(begin: -0.2);
   }
 
   Widget _buildMiniStatCard({
@@ -508,7 +465,7 @@ class _GameResultScreenState extends State<GameResultScreen> {
                   foregroundColor: AppTheme.backgroundDark,
                 ),
               ),
-            ).animate(delay: const Duration(milliseconds: 600)).fadeIn().slideY(begin: 0.3),
+            ).animate(delay: 600.ms).fadeIn().slideY(begin: 0.3),
             
             const SizedBox(height: 12),
             
@@ -545,7 +502,7 @@ class _GameResultScreenState extends State<GameResultScreen> {
                   ),
                 ),
               ),
-            ).animate(delay: const Duration(milliseconds: 700)).fadeIn().slideY(begin: 0.3),
+            ).animate(delay: 700.ms).fadeIn().slideY(begin: 0.3),
           ],
         ),
       ),

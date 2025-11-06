@@ -192,91 +192,54 @@ class _CategorySelectionScreenState extends State<CategorySelectionScreen> {
                               });
                             },
                             child: Container(
-                              padding: const EdgeInsets.all(24), // Daha büyük padding
+                              padding: const EdgeInsets.all(20),
                               decoration: BoxDecoration(
                                 gradient: isSelected
                                     ? LinearGradient(
-                                        begin: Alignment.topLeft,
-                                        end: Alignment.bottomRight,
                                         colors: [
                                           category['color'],
-                                          category['color'].withOpacity(0.8),
+                                          category['color'].withOpacity(0.7),
                                         ],
                                       )
                                     : null,
                                 color: isSelected ? null : AppTheme.cardColor,
-                                borderRadius: BorderRadius.circular(28), // Daha yuvarlak
+                                borderRadius: BorderRadius.circular(20),
                                 border: Border.all(
                                   color: isSelected
-                                      ? Colors.white.withOpacity(0.4)
+                                      ? category['color']
                                       : AppTheme.textTertiary.withOpacity(0.2),
-                                  width: 3, // Kalın border
+                                  width: 2,
                                 ),
                                 boxShadow: isSelected
                                     ? [
                                         BoxShadow(
-                                          color: category['color'].withOpacity(0.5),
-                                          blurRadius: 28,
-                                          offset: const Offset(0, 12),
-                                          spreadRadius: 2,
-                                        ),
-                                        BoxShadow(
-                                          color: Colors.black.withOpacity(0.3),
-                                          blurRadius: 12,
-                                          offset: const Offset(0, 4),
+                                          color:
+                                              category['color'].withOpacity(0.4),
+                                          blurRadius: 20,
+                                          offset: const Offset(0, 8),
                                         ),
                                       ]
-                                    : [
-                                        BoxShadow(
-                                          color: Colors.black.withOpacity(0.1),
-                                          blurRadius: 8,
-                                          offset: const Offset(0, 2),
-                                        ),
-                                      ],
+                                    : null,
                               ),
                               child: Row(
                                 children: [
-                                  // Emoji container - Duolingo tarzı büyük
                                   Container(
-                                    width: 72,
-                                    height: 72,
+                                    width: 60,
+                                    height: 60,
                                     decoration: BoxDecoration(
-                                      gradient: isSelected
-                                          ? LinearGradient(
-                                              colors: [
-                                                Colors.white.withOpacity(0.3),
-                                                Colors.white.withOpacity(0.2),
-                                              ],
-                                            )
-                                          : LinearGradient(
-                                              colors: [
-                                                category['color'].withOpacity(0.3),
-                                                category['color'].withOpacity(0.2),
-                                              ],
-                                            ),
+                                      color: isSelected
+                                          ? Colors.white.withOpacity(0.2)
+                                          : category['color'].withOpacity(0.2),
                                       shape: BoxShape.circle,
-                                      border: Border.all(
-                                        color: isSelected
-                                            ? Colors.white.withOpacity(0.3)
-                                            : category['color'].withOpacity(0.5),
-                                        width: 2,
-                                      ),
-                                      boxShadow: [
-                                        BoxShadow(
-                                          color: Colors.black.withOpacity(0.15),
-                                          blurRadius: 8,
-                                          offset: const Offset(0, 3),
-                                        ),
-                                      ],
                                     ),
                                     child: Center(
                                       child: Text(
                                         category['emoji'],
-                                        style: const TextStyle(fontSize: 40), // Daha büyük emoji
+                                        style: const TextStyle(fontSize: 32),
                                       ),
                                     ),
                                   ),
-                                  const SizedBox(width: 20),
+                                  const SizedBox(width: 16),
                                   Expanded(
                                     child: Column(
                                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -288,57 +251,33 @@ class _CategorySelectionScreenState extends State<CategorySelectionScreen> {
                                             color: isSelected
                                                 ? Colors.white
                                                 : AppTheme.textPrimary,
-                                            fontWeight: FontWeight.w800, // Daha bold
-                                            fontSize: 20,
-                                            letterSpacing: 0.5,
+                                            fontWeight: FontWeight.bold,
                                           ),
                                         ),
-                                        const SizedBox(height: 6),
+                                        const SizedBox(height: 4),
                                         Text(
                                           description,
                                           style:
                                               AppTheme.textTheme.bodyMedium?.copyWith(
                                             color: isSelected
-                                                ? Colors.white.withOpacity(0.95)
+                                                ? Colors.white70
                                                 : AppTheme.textSecondary,
-                                            fontWeight: FontWeight.w500,
-                                            fontSize: 14,
                                           ),
                                         ),
                                       ],
                                     ),
                                   ),
                                   if (isSelected)
-                                    Container(
-                                      padding: const EdgeInsets.all(8),
-                                      decoration: BoxDecoration(
-                                        color: Colors.white.withOpacity(0.25),
-                                        shape: BoxShape.circle,
-                                      ),
-                                      child: const Icon(
-                                        Icons.check_circle_rounded,
-                                        color: Colors.white,
-                                        size: 32,
-                                      ),
-                                    )
-                                  else
-                                    Container(
-                                      padding: const EdgeInsets.all(8),
-                                      decoration: BoxDecoration(
-                                        color: AppTheme.textTertiary.withOpacity(0.1),
-                                        shape: BoxShape.circle,
-                                      ),
-                                      child: Icon(
-                                        Icons.circle_outlined,
-                                        color: AppTheme.textTertiary,
-                                        size: 32,
-                                      ),
+                                    const Icon(
+                                      Icons.check_circle,
+                                      color: Colors.white,
+                                      size: 32,
                                     ),
                                 ],
                               ),
                             ),
                           )
-                              .animate(delay: Duration(milliseconds: 100 * index))
+                              .animate(delay: (100 * index).ms)
                               .fadeIn()
                               .slideX(begin: -0.2),
                         );
@@ -370,7 +309,7 @@ class _CategorySelectionScreenState extends State<CategorySelectionScreen> {
                           backgroundColor: AppTheme.primaryColor,
                         ),
                       ),
-                    ).animate(delay: const Duration(milliseconds: 600)).fadeIn().slideY(begin: 0.3),
+                    ).animate(delay: 600.ms).fadeIn().slideY(begin: 0.3),
                   ),
                 ],
               ),
