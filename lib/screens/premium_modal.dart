@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_animate/flutter_animate.dart';
 import '../config/app_theme.dart';
 
 class PremiumModal extends StatelessWidget {
@@ -49,15 +48,15 @@ class PremiumModal extends StatelessWidget {
               size: 60,
               color: Colors.white,
             ),
-          ).animate().scale(delay: 100.ms).shimmer(duration: 1000.ms),
-          
+          ),
+
           const SizedBox(height: 30),
           
           Text(
             'Premium Özellik',
             style: AppTheme.textTheme.displayMedium,
-          ).animate().fadeIn(delay: 200.ms),
-          
+          ),
+
           const SizedBox(height: 16),
           
           Padding(
@@ -68,28 +67,28 @@ class PremiumModal extends StatelessWidget {
                 color: AppTheme.textSecondary,
               ),
               textAlign: TextAlign.center,
-            ).animate().fadeIn(delay: 300.ms),
+            ),
           ),
-          
+
           const SizedBox(height: 40),
           
           _buildFeature(
             icon: Icons.all_inclusive,
             title: 'Sınırsız Soru',
             description: '20+ soru seçeneği',
-          ).animate(delay: 400.ms).fadeIn().slideX(begin: -0.2),
-          
+          ),
+
           _buildFeature(
             icon: Icons.shopping_basket,
             title: 'Karışık Sepet',
             description: '5 kategoriden karışık sorular',
-          ).animate(delay: 500.ms).fadeIn().slideX(begin: -0.2),
-          
+          ),
+
           _buildFeature(
             icon: Icons.star,
             title: 'Premium Sorular',
             description: 'Özel premium soru havuzu',
-          ).animate(delay: 600.ms).fadeIn().slideX(begin: -0.2),
+          ),
           
           const SizedBox(height: 40),
           
@@ -149,8 +148,8 @@ class PremiumModal extends StatelessWidget {
                       ),
                     ),
                   ),
-                ).animate(delay: 700.ms).fadeIn().slideY(begin: 0.3),
-                
+                ),
+
                 const SizedBox(height: 12),
                 
                 TextButton(

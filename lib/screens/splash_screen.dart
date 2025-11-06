@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_animate/flutter_animate.dart';
 import '../config/app_theme.dart';
 import '../widgets/halley_avatar.dart';
 import 'home_screen.dart';
@@ -11,11 +10,101 @@ class SplashScreen extends StatefulWidget {
   State<SplashScreen> createState() => _SplashScreenState();
 }
 
-class _SplashScreenState extends State<SplashScreen> {
+class _SplashScreenState extends State<SplashScreen> with TickerProviderStateMixin {
+  late AnimationController _avatarController;
+  late AnimationController _titleController;
+  late AnimationController _subtitleController;
+  late AnimationController _loadingController;
+
+  late Animation<double> _avatarScaleAnimation;
+  late Animation<double> _avatarFadeAnimation;
+  late Animation<double> _titleFadeAnimation;
+  late Animation<Offset> _titleSlideAnimation;
+  late Animation<double> _subtitleFadeAnimation;
+  late Animation<double> _subtitleScaleAnimation;
+  late Animation<double> _loadingFadeAnimation;
+
   @override
   void initState() {
     super.initState();
+
+    // Avatar animasyonu
+    _avatarController = AnimationController(
+      duration: const Duration(milliseconds: 600),
+      vsync: this,
+    );
+    _avatarScaleAnimation = CurvedAnimation(
+      parent: _avatarController,
+      curve: Curves.elasticOut,
+    );
+    _avatarFadeAnimation = CurvedAnimation(
+      parent: _avatarController,
+      curve: const Interval(0.0, 0.7, curve: Curves.easeIn),
+    );
+
+    // Title animasyonu
+    _titleController = AnimationController(
+      duration: const Duration(milliseconds: 600),
+      vsync: this,
+    );
+    _titleFadeAnimation = CurvedAnimation(
+      parent: _titleController,
+      curve: Curves.easeIn,
+    );
+    _titleSlideAnimation = Tween<Offset>(
+      begin: const Offset(0, 0.2),
+      end: Offset.zero,
+    ).animate(CurvedAnimation(
+      parent: _titleController,
+      curve: Curves.easeOut,
+    ));
+
+    // Subtitle animasyonu
+    _subtitleController = AnimationController(
+      duration: const Duration(milliseconds: 600),
+      vsync: this,
+    );
+    _subtitleFadeAnimation = CurvedAnimation(
+      parent: _subtitleController,
+      curve: Curves.easeIn,
+    );
+    _subtitleScaleAnimation = CurvedAnimation(
+      parent: _subtitleController,
+      curve: Curves.easeOut,
+    );
+
+    // Loading animasyonu
+    _loadingController = AnimationController(
+      duration: const Duration(milliseconds: 400),
+      vsync: this,
+    );
+    _loadingFadeAnimation = CurvedAnimation(
+      parent: _loadingController,
+      curve: Curves.easeIn,
+    );
+
+    // Animasyonları başlat
+    _startAnimations();
     _navigateToHome();
+  }
+
+  void _startAnimations() async {
+    _avatarController.forward();
+    await Future.delayed(const Duration(milliseconds: 300));
+    _titleController.forward();
+    await Future.delayed(const Duration(milliseconds: 200));
+    _subtitleController.forward();
+    await Future.delayed(const Duration(milliseconds: 300));
+    _loadingController.forward();
+  }
+
+  @override
+  void dispose() {
+    _avatarController.dispose();
+    _titleController.dispose();
+    _subtitleController.dispose();
+    _loadingController.dispose();
+    super.dispose();
   }
 
   Future<void> _navigateToHome() async {
@@ -56,93 +145,97 @@ class _SplashScreenState extends State<SplashScreen> {
               const Spacer(flex: 2),
 
               // Halley Avatar - Duolingo tarzı büyük karakter
-              HalleyAvatar(
-                mood: HalleyMood.happy,
-                size: 220,
-              )
-                  .animate()
-                  .scale(
-                    duration: 600.ms,
-                    curve: Curves.elasticOut,
-                  )
-                  .fadeIn(duration: 400.ms),
+              FadeTransition(
+                opacity: _avatarFadeAnimation,
+                child: ScaleTransition(
+                  scale: _avatarScaleAnimation,
+                  child: const HalleyAvatar(
+                    mood: HalleyMood.happy,
+                    size: 220,
+                    animate: false,
+                  ),
+                ),
+              ),
 
               const SizedBox(height: 50),
 
               // App Name - Duolingo tarzı büyük, bold başlık
-              Text(
-                'halley',
-                style: AppTheme.textTheme.displayLarge?.copyWith(
-                  fontSize: 56,
-                  fontWeight: FontWeight.w900,
-                  color: Colors.white,
-                  letterSpacing: 2,
-                  shadows: [
-                    Shadow(
-                      color: Colors.black.withOpacity(0.2),
-                      offset: const Offset(0, 3),
-                      blurRadius: 8,
+              FadeTransition(
+                opacity: _titleFadeAnimation,
+                child: SlideTransition(
+                  position: _titleSlideAnimation,
+                  child: Text(
+                    'halley',
+                    style: AppTheme.textTheme.displayLarge?.copyWith(
+                      fontSize: 56,
+                      fontWeight: FontWeight.w900,
+                      color: Colors.white,
+                      letterSpacing: 2,
+                      shadows: [
+                        Shadow(
+                          color: Colors.black.withOpacity(0.2),
+                          offset: const Offset(0, 3),
+                          blurRadius: 8,
+                        ),
+                      ],
                     ),
-                  ],
+                  ),
                 ),
-              )
-                  .animate()
-                  .fadeIn(delay: 300.ms, duration: 600.ms)
-                  .slideY(begin: 0.2, end: 0, curve: Curves.easeOut),
+              ),
 
               const SizedBox(height: 12),
 
               // Subtitle
-              Container(
-                padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 8),
-                decoration: BoxDecoration(
-                  color: Colors.white.withOpacity(0.2),
-                  borderRadius: BorderRadius.circular(20),
-                ),
-                child: Text(
-                  'Ok? Nok?',
-                  style: AppTheme.textTheme.headlineSmall?.copyWith(
-                    color: Colors.white,
-                    fontWeight: FontWeight.w700,
-                    letterSpacing: 2,
+              FadeTransition(
+                opacity: _subtitleFadeAnimation,
+                child: ScaleTransition(
+                  scale: _subtitleScaleAnimation,
+                  child: Container(
+                    padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 8),
+                    decoration: BoxDecoration(
+                      color: Colors.white.withOpacity(0.2),
+                      borderRadius: BorderRadius.circular(20),
+                    ),
+                    child: Text(
+                      'Ok? Nok?',
+                      style: AppTheme.textTheme.headlineSmall?.copyWith(
+                        color: Colors.white,
+                        fontWeight: FontWeight.w700,
+                        letterSpacing: 2,
+                      ),
+                    ),
                   ),
                 ),
-              )
-                  .animate()
-                  .fadeIn(delay: 500.ms, duration: 600.ms)
-                  .scale(delay: 500.ms, duration: 400.ms),
+              ),
 
               const Spacer(flex: 2),
 
               // Loading indicator - Duolingo tarzı
-              Column(
-                children: [
-                  SizedBox(
-                    width: 50,
-                    height: 50,
-                    child: CircularProgressIndicator(
-                      valueColor: const AlwaysStoppedAnimation<Color>(
-                        Colors.white,
+              FadeTransition(
+                opacity: _loadingFadeAnimation,
+                child: Column(
+                  children: [
+                    SizedBox(
+                      width: 50,
+                      height: 50,
+                      child: CircularProgressIndicator(
+                        valueColor: const AlwaysStoppedAnimation<Color>(
+                          Colors.white,
+                        ),
+                        strokeWidth: 4,
+                        backgroundColor: Colors.white.withOpacity(0.3),
                       ),
-                      strokeWidth: 4,
-                      backgroundColor: Colors.white.withOpacity(0.3),
                     ),
-                  )
-                      .animate(onPlay: (controller) => controller.repeat())
-                      .fadeIn(delay: 800.ms),
-
-                  const SizedBox(height: 16),
-
-                  Text(
-                    'Yükleniyor...',
-                    style: AppTheme.textTheme.bodyMedium?.copyWith(
-                      color: Colors.white.withOpacity(0.9),
-                      fontWeight: FontWeight.w600,
+                    const SizedBox(height: 16),
+                    Text(
+                      'Yükleniyor...',
+                      style: AppTheme.textTheme.bodyMedium?.copyWith(
+                        color: Colors.white.withOpacity(0.9),
+                        fontWeight: FontWeight.w600,
+                      ),
                     ),
-                  )
-                      .animate()
-                      .fadeIn(delay: 1000.ms),
-                ],
+                  ],
+                ),
               ),
 
               const SizedBox(height: 60),

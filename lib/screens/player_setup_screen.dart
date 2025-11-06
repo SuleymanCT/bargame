@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_animate/flutter_animate.dart';
 import 'package:provider/provider.dart';
 import '../config/app_theme.dart';
 import '../models/player.dart';
@@ -161,8 +160,8 @@ class _PlayerSetupScreenState extends State<PlayerSetupScreen> {
                                 ),
                               ],
                             ),
-                          ).animate().fadeIn().slideY(begin: 0.2),
-                          
+                          ),
+
                           const SizedBox(height: 30),
                           
                           // Soru Sayısı
@@ -256,8 +255,8 @@ class _PlayerSetupScreenState extends State<PlayerSetupScreen> {
                                 ),
                               ],
                             ),
-                          ).animate(delay: 100.ms).fadeIn().slideY(begin: 0.2),
-                          
+                          ),
+
                           const SizedBox(height: 30),
                           
                           // Oyuncu İsimleri
@@ -281,10 +280,7 @@ class _PlayerSetupScreenState extends State<PlayerSetupScreen> {
                                     color: AppTheme.getCategoryColor('ok_not_ok'),
                                   ),
                                 ),
-                              )
-                                  .animate(delay: (200 + 100 * index).ms)
-                                  .fadeIn()
-                                  .slideX(begin: -0.2),
+                              ),
                             );
                           }),
                           
@@ -301,7 +297,7 @@ class _PlayerSetupScreenState extends State<PlayerSetupScreen> {
                                 backgroundColor: AppTheme.primaryColor,
                               ),
                             ),
-                          ).animate(delay: 600.ms).fadeIn().slideY(begin: 0.3),
+                          ),
                         ],
                       ),
                     ),

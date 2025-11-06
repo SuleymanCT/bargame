@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_animate/flutter_animate.dart';
 import 'package:provider/provider.dart';
 import '../config/app_theme.dart';
 import '../models/player.dart';
@@ -97,7 +96,7 @@ class _BasketSetupScreenState extends State<BasketSetupScreen> {
                               child: _buildCategoryCounter(
                                 category,
                                 langService,
-                              ).animate(delay: (100 * index).ms).fadeIn().slideX(begin: -0.2),
+                              ),
                             );
                           }),
                         ],
@@ -227,7 +226,7 @@ class _BasketSetupScreenState extends State<BasketSetupScreen> {
           ],
         ],
       ),
-    ).animate().fadeIn().scale(begin: const Offset(0.9, 0.9));
+    );
   }
 
   Widget _buildCategoryCounter(
@@ -419,7 +418,7 @@ class _BasketSetupScreenState extends State<BasketSetupScreen> {
                   : AppTheme.primaryOrange,
             ),
           ),
-        ).animate(delay: 500.ms).fadeIn().slideY(begin: 0.3),
+        ),
       ),
     );
   }

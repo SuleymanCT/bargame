@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:flutter_animate/flutter_animate.dart';
 import '../services/game_service.dart';
 import '../services/language_service.dart';
 import '../services/personality_service.dart';
@@ -119,7 +118,7 @@ class _GameResultScreenState extends State<GameResultScreen> {
           ),
         ],
       ),
-    ).animate().fadeIn().slideY(begin: -0.3);
+    );
   }
 
   Widget _buildGameStats(Map<String, dynamic> general, LanguageService langService) {
@@ -173,7 +172,7 @@ class _GameResultScreenState extends State<GameResultScreen> {
           ),
         ],
       ),
-    ).animate(delay: 200.ms).fadeIn().slideY(begin: 0.2);
+    );
   }
 
   Widget _buildStatItem({
@@ -379,7 +378,7 @@ class _GameResultScreenState extends State<GameResultScreen> {
           ],
         ],
       ),
-    ).animate(delay: (300 + 100 * index).ms).fadeIn().slideX(begin: -0.2);
+    );
   }
 
   Widget _buildMiniStatCard({
@@ -465,8 +464,8 @@ class _GameResultScreenState extends State<GameResultScreen> {
                   foregroundColor: AppTheme.backgroundDark,
                 ),
               ),
-            ).animate(delay: 600.ms).fadeIn().slideY(begin: 0.3),
-            
+            ),
+
             const SizedBox(height: 12),
             
             SizedBox(
@@ -502,7 +501,7 @@ class _GameResultScreenState extends State<GameResultScreen> {
                   ),
                 ),
               ),
-            ).animate(delay: 700.ms).fadeIn().slideY(begin: 0.3),
+            ),
           ],
         ),
       ),

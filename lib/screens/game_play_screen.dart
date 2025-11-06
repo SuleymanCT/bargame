@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
-import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_card_swiper/flutter_card_swiper.dart';
 import '../services/game_service.dart';
 import '../services/language_service.dart';
@@ -359,7 +358,7 @@ class _GamePlayScreenState extends State<GamePlayScreen> {
           ),
         ),
       ),
-    ).animate().fadeIn(duration: 200.ms);
+    );
   }
 
   void _showExitDialog() {

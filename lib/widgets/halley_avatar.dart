@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_animate/flutter_animate.dart';
 import '../config/app_theme.dart';
 
 enum HalleyMood {
@@ -11,7 +10,7 @@ enum HalleyMood {
   shocked,
 }
 
-class HalleyAvatar extends StatelessWidget {
+class HalleyAvatar extends StatefulWidget {
   final HalleyMood mood;
   final double size;
   final String? speechBubble;
@@ -25,9 +24,49 @@ class HalleyAvatar extends StatelessWidget {
     this.animate = true,
   });
 
+  @override
+  State<HalleyAvatar> createState() => _HalleyAvatarState();
+}
+
+class _HalleyAvatarState extends State<HalleyAvatar> with SingleTickerProviderStateMixin {
+  late AnimationController _controller;
+  late Animation<double> _fadeAnimation;
+  late Animation<double> _scaleAnimation;
+
+  @override
+  void initState() {
+    super.initState();
+    if (widget.animate) {
+      _controller = AnimationController(
+        duration: const Duration(milliseconds: 1500),
+        vsync: this,
+      );
+
+      _fadeAnimation = CurvedAnimation(
+        parent: _controller,
+        curve: const Interval(0.0, 0.3, curve: Curves.easeIn),
+      );
+
+      _scaleAnimation = CurvedAnimation(
+        parent: _controller,
+        curve: const Interval(0.0, 0.5, curve: Curves.easeOut),
+      );
+
+      _controller.forward();
+    }
+  }
+
+  @override
+  void dispose() {
+    if (widget.animate) {
+      _controller.dispose();
+    }
+    super.dispose();
+  }
+
   String get _imagePath {
     // Arka plan olmayan versiyonlar kullan
-    switch (mood) {
+    switch (widget.mood) {
       case HalleyMood.happy:
         return 'assets/images/halley/halley_happy.png';
       case HalleyMood.cool:
@@ -49,8 +88,8 @@ class HalleyAvatar extends StatelessWidget {
       mainAxisSize: MainAxisSize.min,
       children: [
         Container(
-          width: size,
-          height: size,
+          width: widget.size,
+          height: widget.size,
           decoration: BoxDecoration(
             shape: BoxShape.circle,
             boxShadow: AppTheme.yellowGlow(0.2),
@@ -73,11 +112,11 @@ class HalleyAvatar extends StatelessWidget {
             },
           ),
         ),
-        
-        if (speechBubble != null) ...[
+
+        if (widget.speechBubble != null) ...[
           const SizedBox(height: 16),
           Container(
-            constraints: BoxConstraints(maxWidth: size * 2.5),
+            constraints: BoxConstraints(maxWidth: widget.size * 2.5),
             padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 14),
             decoration: BoxDecoration(
               color: AppTheme.primaryYellow,
@@ -85,7 +124,7 @@ class HalleyAvatar extends StatelessWidget {
               boxShadow: AppTheme.softShadow,
             ),
             child: Text(
-              speechBubble!,
+              widget.speechBubble!,
               style: AppTheme.textTheme.bodyMedium?.copyWith(
                 color: AppTheme.backgroundDark,
                 fontWeight: FontWeight.w700,
@@ -97,16 +136,14 @@ class HalleyAvatar extends StatelessWidget {
       ],
     );
 
-    if (animate) {
-      return avatar
-          .animate()
-          .fadeIn(duration: 400.ms)
-          .scale(begin: const Offset(0.8, 0.8))
-          .then()
-          .shimmer(
-            duration: 1500.ms,
-            color: AppTheme.primaryYellow.withOpacity(0.3),
-          );
+    if (widget.animate) {
+      return FadeTransition(
+        opacity: _fadeAnimation,
+        child: ScaleTransition(
+          scale: Tween<double>(begin: 0.8, end: 1.0).animate(_scaleAnimation),
+          child: avatar,
+        ),
+      );
     }
 
     return avatar;
