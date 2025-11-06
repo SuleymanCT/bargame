@@ -56,16 +56,26 @@ class _SplashScreenState extends State<SplashScreen> {
               const Spacer(flex: 2),
 
               // Halley Avatar - Duolingo tarzı büyük karakter
-              HalleyAvatar(
+              const HalleyAvatar(
                 mood: HalleyMood.happy,
-                size: 220,
+                size: 240, // Daha büyük
               )
                   .animate()
+                  .fadeIn(duration: const Duration(milliseconds: 400))
                   .scale(
-                    duration: 600.ms,
+                    duration: const Duration(milliseconds: 800),
                     curve: Curves.elasticOut,
                   )
-                  .fadeIn(duration: 400.ms),
+                  .then() // Zincirleme animasyon
+                  .shimmer(
+                    duration: const Duration(milliseconds: 1200),
+                    color: Colors.white.withOpacity(0.3),
+                  )
+                  .shake(
+                    hz: 2,
+                    curve: Curves.easeInOut,
+                    duration: const Duration(milliseconds: 800),
+                  ),
 
               const SizedBox(height: 50),
 
@@ -73,44 +83,83 @@ class _SplashScreenState extends State<SplashScreen> {
               Text(
                 'halley',
                 style: AppTheme.textTheme.displayLarge?.copyWith(
-                  fontSize: 56,
+                  fontSize: 64, // Daha büyük
                   fontWeight: FontWeight.w900,
                   color: Colors.white,
-                  letterSpacing: 2,
+                  letterSpacing: 3,
                   shadows: [
                     Shadow(
-                      color: Colors.black.withOpacity(0.2),
-                      offset: const Offset(0, 3),
-                      blurRadius: 8,
+                      color: Colors.black.withOpacity(0.3),
+                      offset: const Offset(0, 4),
+                      blurRadius: 12,
+                    ),
+                    // Glow efekti
+                    Shadow(
+                      color: AppTheme.halleyYellow.withOpacity(0.5),
+                      offset: const Offset(0, 0),
+                      blurRadius: 20,
                     ),
                   ],
                 ),
               )
                   .animate()
-                  .fadeIn(delay: 300.ms, duration: 600.ms)
-                  .slideY(begin: 0.2, end: 0, curve: Curves.easeOut),
+                  .fadeIn(delay: const Duration(milliseconds: 300), duration: const Duration(milliseconds: 600))
+                  .slideY(begin: 0.3, end: 0, curve: Curves.easeOutBack)
+                  .then()
+                  .shimmer(
+                    delay: const Duration(milliseconds: 600),
+                    duration: const Duration(milliseconds: 1500),
+                    color: Colors.white.withOpacity(0.4),
+                  ),
 
               const SizedBox(height: 12),
 
-              // Subtitle
+              // Subtitle - Duolingo tarzı pill şeklinde
               Container(
-                padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 8),
+                padding: const EdgeInsets.symmetric(horizontal: 28, vertical: 12),
                 decoration: BoxDecoration(
-                  color: Colors.white.withOpacity(0.2),
-                  borderRadius: BorderRadius.circular(20),
+                  gradient: LinearGradient(
+                    colors: [
+                      Colors.white.withOpacity(0.3),
+                      Colors.white.withOpacity(0.2),
+                    ],
+                  ),
+                  borderRadius: BorderRadius.circular(30),
+                  border: Border.all(
+                    color: Colors.white.withOpacity(0.4),
+                    width: 2,
+                  ),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.black.withOpacity(0.2),
+                      blurRadius: 12,
+                      offset: const Offset(0, 4),
+                    ),
+                  ],
                 ),
-                child: Text(
+                child: const Text(
                   'Ok? Nok?',
-                  style: AppTheme.textTheme.headlineSmall?.copyWith(
+                  style: TextStyle(
                     color: Colors.white,
-                    fontWeight: FontWeight.w700,
-                    letterSpacing: 2,
+                    fontWeight: FontWeight.w800,
+                    letterSpacing: 3,
+                    fontSize: 26,
                   ),
                 ),
               )
                   .animate()
-                  .fadeIn(delay: 500.ms, duration: 600.ms)
-                  .scale(delay: 500.ms, duration: 400.ms),
+                  .fadeIn(delay: const Duration(milliseconds: 600), duration: const Duration(milliseconds: 600))
+                  .scale(
+                    delay: const Duration(milliseconds: 600),
+                    duration: const Duration(milliseconds: 500),
+                    curve: Curves.elasticOut,
+                  )
+                  .then()
+                  .shimmer(
+                    delay: const Duration(milliseconds: 400),
+                    duration: const Duration(milliseconds: 1200),
+                    color: Colors.white.withOpacity(0.5),
+                  ),
 
               const Spacer(flex: 2),
 
@@ -129,19 +178,20 @@ class _SplashScreenState extends State<SplashScreen> {
                     ),
                   )
                       .animate(onPlay: (controller) => controller.repeat())
-                      .fadeIn(delay: 800.ms),
+                      .fadeIn(delay: const Duration(milliseconds: 800)),
 
                   const SizedBox(height: 16),
 
                   Text(
                     'Yükleniyor...',
-                    style: AppTheme.textTheme.bodyMedium?.copyWith(
+                    style: TextStyle(
                       color: Colors.white.withOpacity(0.9),
                       fontWeight: FontWeight.w600,
+                      fontSize: 16,
                     ),
                   )
                       .animate()
-                      .fadeIn(delay: 1000.ms),
+                      .fadeIn(delay: const Duration(milliseconds: 1000)),
                 ],
               ),
 

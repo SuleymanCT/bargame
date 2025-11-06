@@ -256,7 +256,7 @@ class _PlayerSetupScreenState extends State<PlayerSetupScreen> {
                                 ),
                               ],
                             ),
-                          ).animate(delay: 100.ms).fadeIn().slideY(begin: 0.2),
+                          ).animate(delay: const Duration(milliseconds: 100)).fadeIn().slideY(begin: 0.2),
                           
                           const SizedBox(height: 30),
                           
@@ -282,7 +282,7 @@ class _PlayerSetupScreenState extends State<PlayerSetupScreen> {
                                   ),
                                 ),
                               )
-                                  .animate(delay: (200 + 100 * index).ms)
+                                  .animate(delay: Duration(milliseconds: 200 + 100 * index))
                                   .fadeIn()
                                   .slideX(begin: -0.2),
                             );
@@ -301,7 +301,7 @@ class _PlayerSetupScreenState extends State<PlayerSetupScreen> {
                                 backgroundColor: AppTheme.primaryColor,
                               ),
                             ),
-                          ).animate(delay: 600.ms).fadeIn().slideY(begin: 0.3),
+                          ).animate(delay: const Duration(milliseconds: 600)).fadeIn().slideY(begin: 0.3),
                         ],
                       ),
                     ),
