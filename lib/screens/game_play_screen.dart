@@ -117,15 +117,11 @@ class _GamePlayScreenState extends State<GamePlayScreen> {
                   Column(
                     children: [
                       _buildHeader(gameService, player, langService),
-                      
+
                       const SizedBox(height: 20),
-                      
-                      const HalleyAvatar(
-  mood: HalleyMood.happy,
-  size: 80,
-  animate: true,
-),
-                      
+
+                      _buildDynamicHalleyAvatar(gameService, player),
+
                       const SizedBox(height: 20),
                       
                       Expanded(
@@ -146,6 +142,33 @@ class _GamePlayScreenState extends State<GamePlayScreen> {
           ),
         );
       },
+    );
+  }
+
+  Widget _buildDynamicHalleyAvatar(GameService gameService, dynamic player) {
+    // Mevcut oyuncunun istatistiklerini al
+    final stats = gameService.currentSession?.getPlayerStats(player.id) ?? {};
+    final okCount = stats['okCount'] ?? 0;
+    final nokCount = stats['nokCount'] ?? 0;
+
+    // Mood'u belirle
+    HalleyMood mood = HalleyMood.happy;
+
+    if (nokCount > okCount && nokCount >= 3) {
+      // Çok fazla "nok" varsa sinirli penguen
+      mood = HalleyMood.angry;
+    } else if (okCount > nokCount && okCount >= 4) {
+      // Çok fazla "ok" varsa sarhoş penguen
+      mood = HalleyMood.drunk;
+    } else if (okCount == nokCount && okCount >= 2) {
+      // Eşit ve birkaç cevap varsa cool penguen
+      mood = HalleyMood.cool;
+    }
+
+    return HalleyAvatar(
+      mood: mood,
+      size: 80,
+      animate: true,
     );
   }
 

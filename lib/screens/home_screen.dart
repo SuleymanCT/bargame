@@ -70,9 +70,9 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                 begin: Alignment.topLeft,
                 end: Alignment.bottomRight,
                 colors: [
-                  Color(0xFFFFF3E0), // Açık krem
-                  Color(0xFFFFE0B2), // Açık turuncu
-                  Color(0xFFFFCC80), // Orta turuncu
+                  Color(0xFF2D2D2D), // Koyu gri
+                  Color(0xFF1A1A1A), // Daha koyu gri
+                  Color(0xFF0F0F0F), // En koyu gri
                 ],
                 stops: [0.0, 0.5, 1.0],
               ),
@@ -110,7 +110,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                                   'Klasik mod ile hemen başla',
                                   'Start with classic mode',
                                 ),
-                                color: const Color(0xFF6366F1), // Indigo
+                                color: const Color(0xFF6C6C6D), // Gri
                                 delay: 0,
                                 onTap: () {
                                   Navigator.push(
@@ -130,7 +130,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                                   'Özel sorularla daha derin bağ',
                                   'Deeper connection with special questions',
                                 ),
-                                color: const Color(0xFFEC4899), // Pink
+                                color: const Color(0xFF4A4A4A), // Orta gri
                                 isPremium: true,
                                 delay: 100,
                                 onTap: () {
@@ -151,7 +151,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                                   'Oyunu özelleştir',
                                   'Customize your game',
                                 ),
-                                color: const Color(0xFF8B5CF6), // Purple
+                                color: const Color(0xFF8B8B8B), // Açık gri
                                 delay: 200,
                                 onTap: () {
                                   ScaffoldMessenger.of(context).showSnackBar(
@@ -162,7 +162,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                                           'Coming soon!',
                                         ),
                                       ),
-                                      backgroundColor: const Color(0xFF6366F1),
+                                      backgroundColor: const Color(0xFF6C6C6D),
                                       behavior: SnackBarBehavior.floating,
                                       shape: RoundedRectangleBorder(
                                         borderRadius: BorderRadius.circular(16),
@@ -259,7 +259,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
         curve: Curves.easeInOut,
         padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
         decoration: BoxDecoration(
-          color: isActive ? const Color(0xFF6366F1) : Colors.transparent,
+          color: isActive ? const Color(0xFF6C6C6D) : Colors.transparent,
           borderRadius: BorderRadius.circular(16),
         ),
         child: Text(
@@ -300,14 +300,14 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                 begin: Alignment.topLeft,
                 end: Alignment.bottomRight,
                 colors: [
-                  const Color(0xFF6366F1).withOpacity(0.1),
-                  const Color(0xFFEC4899).withOpacity(0.1),
+                  const Color(0xFF6C6C6D).withOpacity(0.2),
+                  const Color(0xFF1A1A1A).withOpacity(0.3),
                 ],
               ),
             ),
             child: ClipOval(
               child: Image.asset(
-                'assets/images/halley/halley_happy.png',
+                'assets/images/halley/halley_cool.png',
                 fit: BoxFit.cover,
               ),
             ),
@@ -348,7 +348,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
             padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
             decoration: BoxDecoration(
               gradient: const LinearGradient(
-                colors: [Color(0xFF6366F1), Color(0xFFEC4899)],
+                colors: [Color(0xFF6C6C6D), Color(0xFF2D2D2D)],
               ),
               borderRadius: BorderRadius.circular(20),
             ),
@@ -464,7 +464,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                             ),
                             decoration: BoxDecoration(
                               gradient: const LinearGradient(
-                                colors: [Color(0xFFFFD700), Color(0xFFFFA500)],
+                                colors: [Color(0xFFB8B8B8), Color(0xFF808080)],
                               ),
                               borderRadius: BorderRadius.circular(8),
                             ),
