@@ -33,12 +33,12 @@ class PremiumModal extends StatelessWidget {
             height: 100,
             decoration: BoxDecoration(
               gradient: const LinearGradient(
-                colors: [Color(0xFFFFD700), Color(0xFFFFA500)],
+                colors: [AppTheme.primaryYellow, AppTheme.primaryOrange],
               ),
               shape: BoxShape.circle,
               boxShadow: [
                 BoxShadow(
-                  color: Colors.amber.withOpacity(0.5),
+                  color: AppTheme.primaryOrange.withOpacity(0.5),
                   blurRadius: 30,
                   spreadRadius: 10,
                 ),
@@ -102,12 +102,12 @@ class PremiumModal extends StatelessWidget {
                   height: 60,
                   decoration: BoxDecoration(
                     gradient: const LinearGradient(
-                      colors: [Color(0xFFFFD700), Color(0xFFFFA500)],
+                      colors: [AppTheme.primaryYellow, AppTheme.primaryOrange],
                     ),
                     borderRadius: BorderRadius.circular(20),
                     boxShadow: [
                       BoxShadow(
-                        color: Colors.amber.withOpacity(0.4),
+                        color: AppTheme.primaryOrange.withOpacity(0.4),
                         blurRadius: 20,
                         offset: const Offset(0, 8),
                       ),

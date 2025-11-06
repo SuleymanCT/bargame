@@ -210,14 +210,14 @@ class _PlayerSetupScreenState extends State<PlayerSetupScreen> {
                                           color: isSelected && !isLocked
                                               ? null
                                               : isLocked
-                                                  ? Colors.amber.withOpacity(0.2)
+                                                  ? AppTheme.primaryOrange.withOpacity(0.2)
                                                   : AppTheme.backgroundLight,
                                           borderRadius: BorderRadius.circular(12),
                                           border: Border.all(
                                             color: isSelected && !isLocked
                                                 ? AppTheme.primaryColor
                                                 : isLocked
-                                                    ? Colors.amber
+                                                    ? AppTheme.primaryOrange
                                                     : AppTheme.textTertiary,
                                             width: 2,
                                           ),
@@ -232,7 +232,7 @@ class _PlayerSetupScreenState extends State<PlayerSetupScreen> {
                                                   color: isSelected && !isLocked
                                                       ? Colors.white
                                                       : isLocked
-                                                          ? Colors.amber
+                                                          ? AppTheme.primaryOrange
                                                           : AppTheme.textSecondary,
                                                   fontWeight: FontWeight.bold,
                                                 ),
@@ -244,7 +244,7 @@ class _PlayerSetupScreenState extends State<PlayerSetupScreen> {
                                                 right: 4,
                                                 child: Icon(
                                                   Icons.lock,
-                                                  color: Colors.amber,
+                                                  color: AppTheme.primaryOrange,
                                                   size: 16,
                                                 ),
                                               ),
