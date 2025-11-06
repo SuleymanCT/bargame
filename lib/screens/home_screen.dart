@@ -18,7 +18,16 @@ class HomeScreen extends StatelessWidget {
         return Scaffold(
           body: Container(
             decoration: const BoxDecoration(
-              gradient: AppTheme.darkGradient,
+              gradient: LinearGradient(
+                begin: Alignment.topCenter,
+                end: Alignment.bottomCenter,
+                colors: [
+                  Color(0xFFFFD054), // Parlak sarı
+                  Color(0xFFFFC042), // Daha koyu sarı
+                  Color(0xFFF07724), // Turuncu
+                ],
+                stops: [0.0, 0.5, 1.0],
+              ),
             ),
             child: SafeArea(
               child: Column(
@@ -48,10 +57,17 @@ class HomeScreen extends StatelessWidget {
                           Text(
                             'Halley',
                             style: AppTheme.textTheme.displayLarge?.copyWith(
-                              foreground: Paint()
-                                ..shader = AppTheme.primaryGradient.createShader(
-                                  const Rect.fromLTWH(0, 0, 300, 100),
+                              color: Colors.white,
+                              fontSize: 56,
+                              fontWeight: FontWeight.w900,
+                              letterSpacing: 2,
+                              shadows: [
+                                Shadow(
+                                  color: Colors.black.withOpacity(0.2),
+                                  offset: const Offset(0, 3),
+                                  blurRadius: 8,
                                 ),
+                              ],
                             ),
                           ),
 
@@ -60,7 +76,8 @@ class HomeScreen extends StatelessWidget {
                           Text(
                             'Ok? Nok?',
                             style: AppTheme.textTheme.headlineMedium?.copyWith(
-                              color: AppTheme.textSecondary,
+                              color: Colors.white.withOpacity(0.9),
+                              fontWeight: FontWeight.w700,
                               letterSpacing: 3,
                             ),
                           ),
@@ -76,7 +93,9 @@ class HomeScreen extends StatelessWidget {
                               'Klasik mod',
                               'Classic mode',
                             ),
-                            gradient: AppTheme.primaryGradient,
+                            gradient: const LinearGradient(
+                              colors: [Color(0xFF2D2D2D), Color(0xFF1A1A1A)],
+                            ),
                             onTap: () {
                               Navigator.push(
                                 context,
@@ -94,7 +113,9 @@ class HomeScreen extends StatelessWidget {
                             icon: Icons.shopping_basket,
                             title: AppStrings.mixedBasket(lang),
                             subtitle: 'Premium ✨',
-                            gradient: AppTheme.primaryGradient,
+                            gradient: const LinearGradient(
+                              colors: [Color(0xFF2D2D2D), Color(0xFF1A1A1A)],
+                            ),
                             isPremium: true,
                             onTap: () {
                               Navigator.push(
@@ -117,7 +138,7 @@ class HomeScreen extends StatelessWidget {
                               'Settings',
                             ),
                             gradient: const LinearGradient(
-                              colors: [Color(0xFF616161), Color(0xFF424242)],
+                              colors: [Color(0xFF424242), Color(0xFF2D2D2D)],
                             ),
                             onTap: () {
                               ScaffoldMessenger.of(context).showSnackBar(
@@ -148,7 +169,7 @@ class HomeScreen extends StatelessWidget {
                     child: Text(
                       'v1.0.0 • Made with 🐧',
                       style: AppTheme.textTheme.bodySmall?.copyWith(
-                        color: AppTheme.textTertiary,
+                        color: Colors.white.withOpacity(0.6),
                       ),
                     ),
                   ),
@@ -170,9 +191,15 @@ class HomeScreen extends StatelessWidget {
           Container(
             padding: const EdgeInsets.all(4),
             decoration: BoxDecoration(
-              color: AppTheme.cardColor,
+              color: Colors.white.withOpacity(0.2),
               borderRadius: BorderRadius.circular(12),
-              boxShadow: AppTheme.softShadow,
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.black.withOpacity(0.1),
+                  blurRadius: 10,
+                  offset: const Offset(0, 2),
+                ),
+              ],
             ),
             child: Row(
               mainAxisSize: MainAxisSize.min,
@@ -198,13 +225,13 @@ class HomeScreen extends StatelessWidget {
       child: Container(
         padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
         decoration: BoxDecoration(
-          gradient: isActive ? AppTheme.primaryGradient : null,
+          color: isActive ? Colors.white : Colors.transparent,
           borderRadius: BorderRadius.circular(8),
         ),
         child: Text(
           text,
           style: AppTheme.textTheme.labelLarge?.copyWith(
-            color: isActive ? AppTheme.backgroundDark : AppTheme.textSecondary,
+            color: isActive ? AppTheme.backgroundDark : Colors.white.withOpacity(0.7),
             fontSize: 12,
           ),
         ),

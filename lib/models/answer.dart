@@ -45,7 +45,20 @@ class Answer {
 
   bool get isPositive {
     if (binaryAnswer == null) return false;
-    final positive = ['ok', 'yapabilir', 'kıskanmam', 'değil'];
-    return positive.any((p) => binaryAnswer!.toLowerCase().contains(p));
+    final answer = binaryAnswer!.toLowerCase().trim();
+
+    // Pozitif cevaplar: OK, Yapabilir, Aldatma, Kıskanırım
+    final positive = ['ok', 'yapabilir', 'aldatma', 'kıskanırım'];
+
+    // Negatif cevaplar: NOT OK, Yapamaz, Değil, Kıskanmam
+    final negative = ['not ok', 'yapamaz', 'değil', 'kıskanmam'];
+
+    // Önce negatif kontrolü yap (çünkü "ok" hem "ok" hem "not ok"ta var)
+    if (negative.any((n) => answer.contains(n))) {
+      return false;
+    }
+
+    // Sonra pozitif kontrolü yap
+    return positive.any((p) => answer.contains(p));
   }
 }
