@@ -60,49 +60,49 @@ class _GameResultScreenState extends State<GameResultScreen> {
                 ),
                 child: SafeArea(
                   child: Column(
-                children: [
-                  _buildHeader(langService),
-                  
-                  Expanded(
-                    child: SingleChildScrollView(
-                      padding: const EdgeInsets.all(20),
-                      child: Column(
-                        children: [
-                          // Halley Celebration
-      const HalleyAvatar(
-  mood: HalleyMood.happy,
-  size: 100,
-  animate: true,
-),
-                          
-                          const SizedBox(height: 30),
-                          
-                          // Game Stats
-                          _buildGameStats(general, langService),
-                          
-                          const SizedBox(height: 30),
-                          
-                          // Players Results
-                          ...List.generate(players.length, (index) {
-                            final player = players[index];
-                            final playerStats = results[player.id]['stats'] as Map<String, dynamic>;
-                            return _buildPlayerCard(
-                              player,
-                              playerStats,
-                              index,
-                              langService,
-                            );
-                          }),
-                        ],
+                    children: [
+                      _buildHeader(langService),
+
+                      Expanded(
+                        child: SingleChildScrollView(
+                          padding: const EdgeInsets.all(20),
+                          child: Column(
+                            children: [
+                              // Halley Celebration
+                              const HalleyAvatar(
+                                mood: HalleyMood.happy,
+                                size: 100,
+                                animate: true,
+                              ),
+
+                              const SizedBox(height: 30),
+
+                              // Game Stats
+                              _buildGameStats(general, langService),
+
+                              const SizedBox(height: 30),
+
+                              // Players Results
+                              ...List.generate(players.length, (index) {
+                                final player = players[index];
+                                final playerStats = results[player.id]['stats'] as Map<String, dynamic>;
+                                return _buildPlayerCard(
+                                  player,
+                                  playerStats,
+                                  index,
+                                  langService,
+                                );
+                              }),
+                            ],
+                          ),
+                        ),
                       ),
-                    ),
+
+                      _buildBottomButtons(gameService, langService),
+                    ],
                   ),
-                  
-                    _buildBottomButtons(gameService, langService),
-                  ],
                 ),
               ),
-            ),
             // Confetti Effect - Duolingo tarzı kutlama
             Align(
               alignment: Alignment.topCenter,

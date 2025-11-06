@@ -56,7 +56,7 @@ class _SplashScreenState extends State<SplashScreen> {
               const Spacer(flex: 2),
 
               // Halley Avatar - Duolingo tarzı büyük karakter
-              const HalleyAvatar(
+              HalleyAvatar(
                 mood: HalleyMood.happy,
                 size: 240, // Daha büyük
               )
