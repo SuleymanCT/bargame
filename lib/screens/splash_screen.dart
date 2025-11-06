@@ -58,14 +58,24 @@ class _SplashScreenState extends State<SplashScreen> {
               // Halley Avatar - Duolingo tarzı büyük karakter
               const HalleyAvatar(
                 mood: HalleyMood.happy,
-                size: 220,
+                size: 240, // Daha büyük
               )
                   .animate()
+                  .fadeIn(duration: const Duration(milliseconds: 400))
                   .scale(
-                    duration: Duration(milliseconds: 600),
+                    duration: const Duration(milliseconds: 800),
                     curve: Curves.elasticOut,
                   )
-                  .fadeIn(duration: Duration(milliseconds: 400)),
+                  .then() // Zincirleme animasyon
+                  .shimmer(
+                    duration: const Duration(milliseconds: 1200),
+                    color: Colors.white.withOpacity(0.3),
+                  )
+                  .shake(
+                    hz: 2,
+                    curve: Curves.easeInOut,
+                    duration: const Duration(milliseconds: 800),
+                  ),
 
               const SizedBox(height: 50),
 
@@ -73,45 +83,83 @@ class _SplashScreenState extends State<SplashScreen> {
               Text(
                 'halley',
                 style: AppTheme.textTheme.displayLarge?.copyWith(
-                  fontSize: 56,
+                  fontSize: 64, // Daha büyük
                   fontWeight: FontWeight.w900,
                   color: Colors.white,
-                  letterSpacing: 2,
+                  letterSpacing: 3,
                   shadows: [
                     Shadow(
-                      color: Colors.black.withOpacity(0.2),
-                      offset: const Offset(0, 3),
-                      blurRadius: 8,
+                      color: Colors.black.withOpacity(0.3),
+                      offset: const Offset(0, 4),
+                      blurRadius: 12,
+                    ),
+                    // Glow efekti
+                    Shadow(
+                      color: AppTheme.halleyYellow.withOpacity(0.5),
+                      offset: const Offset(0, 0),
+                      blurRadius: 20,
                     ),
                   ],
                 ),
               )
                   .animate()
                   .fadeIn(delay: const Duration(milliseconds: 300), duration: const Duration(milliseconds: 600))
-                  .slideY(begin: 0.2, end: 0, curve: Curves.easeOut),
+                  .slideY(begin: 0.3, end: 0, curve: Curves.easeOutBack)
+                  .then()
+                  .shimmer(
+                    delay: const Duration(milliseconds: 600),
+                    duration: const Duration(milliseconds: 1500),
+                    color: Colors.white.withOpacity(0.4),
+                  ),
 
               const SizedBox(height: 12),
 
-              // Subtitle
+              // Subtitle - Duolingo tarzı pill şeklinde
               Container(
-                padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 8),
+                padding: const EdgeInsets.symmetric(horizontal: 28, vertical: 12),
                 decoration: BoxDecoration(
-                  color: Colors.white.withOpacity(0.2),
-                  borderRadius: BorderRadius.circular(20),
+                  gradient: LinearGradient(
+                    colors: [
+                      Colors.white.withOpacity(0.3),
+                      Colors.white.withOpacity(0.2),
+                    ],
+                  ),
+                  borderRadius: BorderRadius.circular(30),
+                  border: Border.all(
+                    color: Colors.white.withOpacity(0.4),
+                    width: 2,
+                  ),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.black.withOpacity(0.2),
+                      blurRadius: 12,
+                      offset: const Offset(0, 4),
+                    ),
+                  ],
                 ),
                 child: const Text(
                   'Ok? Nok?',
                   style: TextStyle(
                     color: Colors.white,
-                    fontWeight: FontWeight.w700,
-                    letterSpacing: 2,
-                    fontSize: 24,
+                    fontWeight: FontWeight.w800,
+                    letterSpacing: 3,
+                    fontSize: 26,
                   ),
                 ),
               )
                   .animate()
-                  .fadeIn(delay: const Duration(milliseconds: 500), duration: const Duration(milliseconds: 600))
-                  .scale(delay: const Duration(milliseconds: 500), duration: const Duration(milliseconds: 400)),
+                  .fadeIn(delay: const Duration(milliseconds: 600), duration: const Duration(milliseconds: 600))
+                  .scale(
+                    delay: const Duration(milliseconds: 600),
+                    duration: const Duration(milliseconds: 500),
+                    curve: Curves.elasticOut,
+                  )
+                  .then()
+                  .shimmer(
+                    delay: const Duration(milliseconds: 400),
+                    duration: const Duration(milliseconds: 1200),
+                    color: Colors.white.withOpacity(0.5),
+                  ),
 
               const Spacer(flex: 2),
 
