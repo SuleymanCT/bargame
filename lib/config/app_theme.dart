@@ -2,34 +2,50 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class AppTheme {
-  // 🎨 HALLEY BRAND COLORS (Yeni Palet)
+  // 🎨 HALLEY BRAND COLORS (Unified Palette - Sarı-Turuncu-Beyaz Tema)
   static const primaryYellow = Color(0xFFFFD054); // Ana sarı
-  static const primaryGray = Color(0xFF6C6C6D); // Gri
+  static const lightYellow = Color(0xFFFFF8E1); // Açık sarı (arka plan)
+  static const mediumYellow = Color(0xFFFFC042); // Orta sarı
   static const primaryOrange = Color(0xFFF07724); // Turuncu
-  
+  static const lightOrange = Color(0xFFFFE0B2); // Açık turuncu
+
+  // Accent colors
+  static const warmWhite = Color(0xFFFFFBF5); // Sıcak beyaz
+  static const softGray = Color(0xFFF5F5F5); // Yumuşak gri
+  static const mediumGray = Color(0xFFE0E0E0); // Orta gri
+  static const darkGray = Color(0xFF757575); // Koyu gri
+
   // UI Colors
   static const primaryColor = primaryYellow;
-  static const secondaryColor = primaryGray;
-  static const accentColor = primaryOrange;
-  
+  static const secondaryColor = primaryOrange;
+  static const accentColor = mediumYellow;
+
+  // Backgrounds - Açık tonlar
+  static const backgroundLight = lightYellow;
+  static const backgroundWhite = warmWhite;
+  static const cardColor = Colors.white;
+
+  // Legacy dark colors (sadece belirli yerlerde kullanılacak)
   static const backgroundDark = Color(0xFF1A1A1A);
-  static const backgroundLight = Color(0xFF2D2D2D);
-  static const cardColor = Color(0xFF2D2D2D);
-  
-  static const textPrimary = Color(0xFFFFFFFF);
-  static const textSecondary = Color(0xFFB8B8B8);
-  static const textTertiary = Color(0xFF808080);
-  
-  // Status Colors (Brand renklerinde)
+
+  // Text Colors - Koyu renkler açık arka plan için
+  static const textPrimary = Color(0xFF2C2C2C);
+  static const textSecondary = Color(0xFF666666);
+  static const textTertiary = Color(0xFF999999);
+  static const textOnYellow = Color(0xFF2C2C2C);
+  static const textOnOrange = Colors.white;
+
+  // Status Colors
   static const successColor = primaryYellow;
-  static const errorColor = primaryGray;
+  static const errorColor = Color(0xFFE57373);
   static const warningColor = primaryOrange;
   
   // Legacy (eski kodlar için)
   static const halleyYellow = primaryYellow;
-  static const halleyGray = primaryGray;
+  static const primaryGray = darkGray; // Eski kod uyumluluğu
+  static const halleyGray = darkGray;
   static const halleyOrange = primaryOrange;
-  static const halleyWhite = Color(0xFFF5F5F5);
+  static const halleyWhite = warmWhite;
   static const halleyBlack = Color(0xFF212121);
   
   // Category Colors (Brand palette)
@@ -39,32 +55,52 @@ class AppTheme {
   static const canDoColor = primaryYellow;
   static const angerColor = primaryOrange;
   
-  // Gradients
+  // Gradients - Yeni birleşik tema
   static const primaryGradient = LinearGradient(
     begin: Alignment.topLeft,
     end: Alignment.bottomRight,
-    colors: [primaryYellow, Color(0xFFFFC042)],
+    colors: [primaryYellow, mediumYellow],
   );
-  
+
   static const secondaryGradient = LinearGradient(
     begin: Alignment.topLeft,
     end: Alignment.bottomRight,
     colors: [primaryOrange, Color(0xFFE06519)],
   );
-  
+
+  // Ana arka plan gradient - Splash ile uyumlu
+  static const backgroundGradient = LinearGradient(
+    begin: Alignment.topCenter,
+    end: Alignment.bottomCenter,
+    colors: [
+      Color(0xFFFFD054), // Parlak sarı
+      Color(0xFFFFC042), // Orta sarı
+      Color(0xFFF07724), // Turuncu
+    ],
+    stops: [0.0, 0.5, 1.0],
+  );
+
+  // Açık arka plan gradient (alternatif)
+  static const lightBackgroundGradient = LinearGradient(
+    begin: Alignment.topCenter,
+    end: Alignment.bottomCenter,
+    colors: [warmWhite, lightYellow],
+  );
+
+  // Legacy - Eski kod uyumluluğu için
   static const darkGradient = LinearGradient(
     begin: Alignment.topCenter,
     end: Alignment.bottomCenter,
-    colors: [backgroundDark, backgroundLight],
+    colors: [backgroundDark, Color(0xFF2D2D2D)],
   );
-  
+
   static const cardGradient = LinearGradient(
     begin: Alignment.topLeft,
     end: Alignment.bottomRight,
-    colors: [Color(0xFF2D2D2D), Color(0xFF252525)],
+    colors: [Colors.white, Color(0xFFFFFBF5)],
   );
   
-  // Typography (Daha modern)
+  // Typography - Açık ve koyu arka planlar için optimize
   static TextTheme textTheme = TextTheme(
     displayLarge: GoogleFonts.poppins(
       fontSize: 42,
@@ -129,20 +165,50 @@ class AppTheme {
       letterSpacing: 1,
     ),
   );
+
+  // Dark text theme (beyaz yazılar için, splash gibi koyu arka planlar için)
+  static TextTheme darkTextTheme = TextTheme(
+    displayLarge: GoogleFonts.poppins(
+      fontSize: 42,
+      fontWeight: FontWeight.w800,
+      color: Colors.white,
+      height: 1.1,
+      letterSpacing: -1.5,
+    ),
+    headlineMedium: GoogleFonts.poppins(
+      fontSize: 24,
+      fontWeight: FontWeight.w600,
+      color: Colors.white,
+      height: 1.3,
+    ),
+    headlineSmall: GoogleFonts.poppins(
+      fontSize: 20,
+      fontWeight: FontWeight.w600,
+      color: Colors.white,
+      height: 1.3,
+    ),
+    bodyMedium: GoogleFonts.inter(
+      fontSize: 14,
+      fontWeight: FontWeight.w400,
+      color: Colors.white70,
+      height: 1.5,
+    ),
+  );
   
-  // Theme Data
+  // Theme Data - Yeni açık tema
   static ThemeData get darkTheme {
     return ThemeData(
       useMaterial3: true,
-      brightness: Brightness.dark,
-      scaffoldBackgroundColor: backgroundDark,
-      
-      colorScheme: const ColorScheme.dark(
+      brightness: Brightness.light, // Açık tema
+      scaffoldBackgroundColor: warmWhite,
+
+      colorScheme: const ColorScheme.light(
         primary: primaryColor,
         secondary: secondaryColor,
         tertiary: accentColor,
         surface: cardColor,
         error: errorColor,
+        background: warmWhite,
       ),
       
       textTheme: textTheme,
@@ -159,8 +225,9 @@ class AppTheme {
       elevatedButtonTheme: ElevatedButtonThemeData(
         style: ElevatedButton.styleFrom(
           backgroundColor: primaryColor,
-          foregroundColor: backgroundDark,
-          elevation: 0,
+          foregroundColor: textPrimary,
+          elevation: 4,
+          shadowColor: primaryYellow.withOpacity(0.3),
           padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 16),
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(16),
@@ -175,14 +242,14 @@ class AppTheme {
       
       inputDecorationTheme: InputDecorationTheme(
         filled: true,
-        fillColor: cardColor,
+        fillColor: Colors.white,
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(16),
-          borderSide: BorderSide.none,
+          borderSide: BorderSide(color: mediumGray),
         ),
         enabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(16),
-          borderSide: BorderSide(color: textTertiary.withOpacity(0.2)),
+          borderSide: BorderSide(color: mediumGray),
         ),
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(16),
@@ -191,6 +258,10 @@ class AppTheme {
         contentPadding: const EdgeInsets.symmetric(horizontal: 20, vertical: 16),
         hintStyle: GoogleFonts.inter(
           color: textTertiary,
+          fontSize: 14,
+        ),
+        labelStyle: GoogleFonts.inter(
+          color: textSecondary,
           fontSize: 14,
         ),
       ),

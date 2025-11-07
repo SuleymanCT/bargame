@@ -73,7 +73,7 @@ class _BasketSetupScreenState extends State<BasketSetupScreen> {
         return Scaffold(
           body: Container(
             decoration: const BoxDecoration(
-              gradient: AppTheme.darkGradient,
+              gradient: AppTheme.backgroundGradient,
             ),
             child: SafeArea(
               child: Column(
@@ -120,7 +120,7 @@ class _BasketSetupScreenState extends State<BasketSetupScreen> {
       child: Row(
         children: [
           IconButton(
-            icon: const Icon(Icons.arrow_back, color: Colors.white),
+            icon: Icon(Icons.arrow_back, color: AppTheme.textPrimary),
             onPressed: () => Navigator.pop(context),
           ),
           const SizedBox(width: 8),
@@ -132,7 +132,7 @@ class _BasketSetupScreenState extends State<BasketSetupScreen> {
                   children: [
                     Text(
                       langService.translate('Karışık Sepet', 'Mixed Basket'),
-                      style: AppTheme.textTheme.headlineMedium,
+                      style: AppTheme.darkTextTheme.headlineMedium,
                     ),
                     const SizedBox(width: 8),
                     Container(
@@ -178,19 +178,9 @@ class _BasketSetupScreenState extends State<BasketSetupScreen> {
     return Container(
       padding: const EdgeInsets.all(24),
       decoration: BoxDecoration(
-        gradient: LinearGradient(
-          begin: Alignment.topLeft,
-          end: Alignment.bottomRight,
-          colors: [
-            AppTheme.primaryColor.withOpacity(0.2),
-            AppTheme.secondaryColor.withOpacity(0.2),
-          ],
-        ),
+        color: Colors.white,
         borderRadius: BorderRadius.circular(20),
-        border: Border.all(
-          color: AppTheme.primaryColor.withOpacity(0.3),
-          width: 2,
-        ),
+        boxShadow: AppTheme.softShadow,
       ),
       child: Column(
         children: [
@@ -243,12 +233,13 @@ class _BasketSetupScreenState extends State<BasketSetupScreen> {
     return Container(
       padding: const EdgeInsets.all(20),
       decoration: BoxDecoration(
-        color: AppTheme.cardColor,
+        color: Colors.white,
         borderRadius: BorderRadius.circular(20),
+        boxShadow: AppTheme.softShadow,
         border: Border.all(
-          color: count > 0 
-              ? color.withOpacity(0.5) 
-              : AppTheme.textTertiary.withOpacity(0.2),
+          color: count > 0
+              ? color.withOpacity(0.5)
+              : AppTheme.mediumGray,
           width: 2,
         ),
       ),
@@ -364,10 +355,10 @@ class _BasketSetupScreenState extends State<BasketSetupScreen> {
     return Container(
       padding: const EdgeInsets.all(20),
       decoration: BoxDecoration(
-        color: AppTheme.cardColor,
+        color: Colors.white,
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.2),
+            color: Colors.black.withOpacity(0.15),
             blurRadius: 20,
             offset: const Offset(0, -4),
           ),

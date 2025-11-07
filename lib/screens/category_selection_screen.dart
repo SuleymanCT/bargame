@@ -133,7 +133,7 @@ class _CategorySelectionScreenState extends State<CategorySelectionScreen> {
         return Scaffold(
           body: Container(
             decoration: const BoxDecoration(
-              gradient: AppTheme.darkGradient,
+              gradient: AppTheme.backgroundGradient,
             ),
             child: SafeArea(
               child: Column(
@@ -143,7 +143,7 @@ class _CategorySelectionScreenState extends State<CategorySelectionScreen> {
                     child: Row(
                       children: [
                         IconButton(
-                          icon: const Icon(Icons.arrow_back, color: Colors.white),
+                          icon: Icon(Icons.arrow_back, color: AppTheme.textPrimary),
                           onPressed: () => Navigator.pop(context),
                         ),
                         const SizedBox(width: 8),
@@ -153,12 +153,12 @@ class _CategorySelectionScreenState extends State<CategorySelectionScreen> {
                             children: [
                               Text(
                                 AppStrings.selectCategory(lang),
-                                style: AppTheme.textTheme.headlineMedium,
+                                style: AppTheme.darkTextTheme.headlineMedium,
                               ),
                               Text(
                                 '${widget.players.length} ${langService.translate("oyuncu", "players")} • ${widget.questionCount} ${langService.translate("soru", "questions")}',
-                                style: AppTheme.textTheme.bodyMedium?.copyWith(
-                                  color: AppTheme.textSecondary,
+                                style: AppTheme.darkTextTheme.bodyMedium?.copyWith(
+                                  color: Colors.white70,
                                 ),
                               ),
                             ],
@@ -197,28 +197,27 @@ class _CategorySelectionScreenState extends State<CategorySelectionScreen> {
                                     ? LinearGradient(
                                         colors: [
                                           category['color'],
-                                          category['color'].withOpacity(0.7),
+                                          category['color'].withOpacity(0.8),
                                         ],
                                       )
                                     : null,
-                                color: isSelected ? null : AppTheme.cardColor,
+                                color: isSelected ? null : Colors.white,
                                 borderRadius: BorderRadius.circular(20),
                                 border: Border.all(
                                   color: isSelected
                                       ? category['color']
-                                      : AppTheme.textTertiary.withOpacity(0.2),
+                                      : AppTheme.mediumGray,
                                   width: 2,
                                 ),
                                 boxShadow: isSelected
                                     ? [
                                         BoxShadow(
-                                          color:
-                                              category['color'].withOpacity(0.4),
+                                          color: category['color'].withOpacity(0.4),
                                           blurRadius: 20,
                                           offset: const Offset(0, 8),
                                         ),
                                       ]
-                                    : null,
+                                    : AppTheme.softShadow,
                               ),
                               child: Row(
                                 children: [
