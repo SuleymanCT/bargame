@@ -109,7 +109,7 @@ class _GamePlayScreenState extends State<GamePlayScreen> {
         return Scaffold(
           body: Container(
             decoration: const BoxDecoration(
-              gradient: AppTheme.darkGradient,
+              gradient: AppTheme.backgroundGradient,
             ),
             child: SafeArea(
               child: Stack(
@@ -180,7 +180,7 @@ class _GamePlayScreenState extends State<GamePlayScreen> {
           Row(
             children: [
               IconButton(
-                icon: const Icon(Icons.close, color: Colors.white),
+                icon: Icon(Icons.close, color: AppTheme.textPrimary),
                 onPressed: _showExitDialog,
               ),
               Expanded(
@@ -188,16 +188,16 @@ class _GamePlayScreenState extends State<GamePlayScreen> {
                   children: [
                     Text(
                       '${gameService.currentQuestionNumber}/${gameService.totalQuestions}',
-                      style: AppTheme.textTheme.headlineSmall,
+                      style: AppTheme.darkTextTheme.headlineSmall,
                     ),
                     const SizedBox(height: 4),
                     ClipRRect(
                       borderRadius: BorderRadius.circular(10),
                       child: LinearProgressIndicator(
                         value: gameService.progress,
-                        backgroundColor: AppTheme.cardColor,
+                        backgroundColor: Colors.white.withOpacity(0.3),
                         valueColor: const AlwaysStoppedAnimation<Color>(
-                          AppTheme.halleyYellow,
+                          Colors.white,
                         ),
                         minHeight: 8,
                       ),
@@ -388,7 +388,7 @@ class _GamePlayScreenState extends State<GamePlayScreen> {
     showDialog(
       context: context,
       builder: (context) => AlertDialog(
-        backgroundColor: AppTheme.cardColor,
+        backgroundColor: Colors.white,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(20),
         ),
@@ -406,7 +406,7 @@ class _GamePlayScreenState extends State<GamePlayScreen> {
             child: Text(
               'Devam Et',
               style: AppTheme.textTheme.labelLarge?.copyWith(
-                color: AppTheme.halleyYellow,
+                color: AppTheme.primaryYellow,
               ),
             ),
           ),

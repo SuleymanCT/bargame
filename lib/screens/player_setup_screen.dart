@@ -75,7 +75,7 @@ class _PlayerSetupScreenState extends State<PlayerSetupScreen> {
         return Scaffold(
           body: Container(
             decoration: const BoxDecoration(
-              gradient: AppTheme.darkGradient,
+              gradient: AppTheme.backgroundGradient,
             ),
             child: SafeArea(
               child: Column(
@@ -85,13 +85,13 @@ class _PlayerSetupScreenState extends State<PlayerSetupScreen> {
                     child: Row(
                       children: [
                         IconButton(
-                          icon: const Icon(Icons.arrow_back, color: Colors.white),
+                          icon: Icon(Icons.arrow_back, color: AppTheme.textPrimary),
                           onPressed: () => Navigator.pop(context),
                         ),
                         const SizedBox(width: 8),
                         Text(
                           AppStrings.addPlayers(langService.currentLanguage),
-                          style: AppTheme.textTheme.headlineMedium,
+                          style: AppTheme.darkTextTheme.headlineMedium,
                         ),
                       ],
                     ),
@@ -106,8 +106,9 @@ class _PlayerSetupScreenState extends State<PlayerSetupScreen> {
                           Container(
                             padding: const EdgeInsets.all(20),
                             decoration: BoxDecoration(
-                              color: AppTheme.cardColor,
+                              color: Colors.white,
                               borderRadius: BorderRadius.circular(20),
+                              boxShadow: AppTheme.softShadow,
                             ),
                             child: Column(
                               children: [
@@ -168,8 +169,9 @@ class _PlayerSetupScreenState extends State<PlayerSetupScreen> {
                           Container(
                             padding: const EdgeInsets.all(20),
                             decoration: BoxDecoration(
-                              color: AppTheme.cardColor,
+                              color: Colors.white,
                               borderRadius: BorderRadius.circular(20),
+                              boxShadow: AppTheme.softShadow,
                             ),
                             child: Column(
                               children: [

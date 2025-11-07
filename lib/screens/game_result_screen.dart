@@ -34,7 +34,7 @@ class _GameResultScreenState extends State<GameResultScreen> {
         return Scaffold(
           body: Container(
             decoration: const BoxDecoration(
-              gradient: AppTheme.darkGradient,
+              gradient: AppTheme.backgroundGradient,
             ),
             child: SafeArea(
               child: Column(

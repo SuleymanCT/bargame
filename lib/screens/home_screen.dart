@@ -66,16 +66,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
         return Scaffold(
           body: Container(
             decoration: const BoxDecoration(
-              gradient: LinearGradient(
-                begin: Alignment.topLeft,
-                end: Alignment.bottomRight,
-                colors: [
-                  Color(0xFF2D2D2D), // Koyu gri
-                  Color(0xFF1A1A1A), // Daha koyu gri
-                  Color(0xFF0F0F0F), // En koyu gri
-                ],
-                stops: [0.0, 0.5, 1.0],
-              ),
+              gradient: AppTheme.backgroundGradient, // Splash ile aynı gradient
             ),
             child: SafeArea(
               child: Column(
@@ -110,7 +101,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                                   'Klasik mod ile hemen başla',
                                   'Start with classic mode',
                                 ),
-                                color: const Color(0xFF6C6C6D), // Gri
+                                color: AppTheme.primaryYellow,
                                 delay: 0,
                                 onTap: () {
                                   Navigator.push(
@@ -130,7 +121,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                                   'Özel sorularla daha derin bağ',
                                   'Deeper connection with special questions',
                                 ),
-                                color: const Color(0xFF4A4A4A), // Orta gri
+                                color: AppTheme.primaryOrange,
                                 isPremium: true,
                                 delay: 100,
                                 onTap: () {
@@ -151,7 +142,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                                   'Oyunu özelleştir',
                                   'Customize your game',
                                 ),
-                                color: const Color(0xFF8B8B8B), // Açık gri
+                                color: AppTheme.mediumYellow,
                                 delay: 200,
                                 onTap: () {
                                   ScaffoldMessenger.of(context).showSnackBar(
@@ -162,7 +153,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                                           'Coming soon!',
                                         ),
                                       ),
-                                      backgroundColor: const Color(0xFF6C6C6D),
+                                      backgroundColor: AppTheme.primaryOrange,
                                       behavior: SnackBarBehavior.floating,
                                       shape: RoundedRectangleBorder(
                                         borderRadius: BorderRadius.circular(16),
@@ -259,13 +250,13 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
         curve: Curves.easeInOut,
         padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
         decoration: BoxDecoration(
-          color: isActive ? const Color(0xFF6C6C6D) : Colors.transparent,
+          color: isActive ? AppTheme.primaryOrange : Colors.transparent,
           borderRadius: BorderRadius.circular(16),
         ),
         child: Text(
           text,
           style: AppTheme.textTheme.labelLarge?.copyWith(
-            color: isActive ? Colors.white : const Color(0xFF6B7280),
+            color: isActive ? Colors.white : AppTheme.textPrimary.withOpacity(0.7),
             fontSize: 14,
             fontWeight: isActive ? FontWeight.w600 : FontWeight.w500,
           ),
@@ -282,9 +273,9 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
         borderRadius: BorderRadius.circular(32),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.06),
-            blurRadius: 20,
-            offset: const Offset(0, 4),
+            color: Colors.black.withOpacity(0.15),
+            blurRadius: 30,
+            offset: const Offset(0, 10),
           ),
         ],
       ),
@@ -300,15 +291,18 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                 begin: Alignment.topLeft,
                 end: Alignment.bottomRight,
                 colors: [
-                  const Color(0xFF6C6C6D).withOpacity(0.2),
-                  const Color(0xFF1A1A1A).withOpacity(0.3),
+                  AppTheme.primaryYellow.withOpacity(0.3),
+                  AppTheme.primaryOrange.withOpacity(0.3),
                 ],
               ),
             ),
-            child: ClipOval(
-              child: Image.asset(
-                'assets/images/halley/halley_cool.png',
-                fit: BoxFit.cover,
+            child: Padding(
+              padding: const EdgeInsets.all(8),
+              child: ClipOval(
+                child: Image.asset(
+                  'assets/images/halley/halley_cool.png',
+                  fit: BoxFit.cover,
+                ),
               ),
             ),
           ),
@@ -347,15 +341,13 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
           Container(
             padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
             decoration: BoxDecoration(
-              gradient: const LinearGradient(
-                colors: [Color(0xFF6C6C6D), Color(0xFF2D2D2D)],
-              ),
+              gradient: AppTheme.primaryGradient,
               borderRadius: BorderRadius.circular(20),
             ),
             child: Text(
               'Ok? Nok?',
               style: AppTheme.textTheme.bodyMedium?.copyWith(
-                color: Colors.white,
+                color: AppTheme.textPrimary,
                 fontWeight: FontWeight.w700,
                 letterSpacing: 1.5,
               ),
@@ -463,9 +455,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                               vertical: 4,
                             ),
                             decoration: BoxDecoration(
-                              gradient: const LinearGradient(
-                                colors: [Color(0xFFB8B8B8), Color(0xFF808080)],
-                              ),
+                              gradient: AppTheme.secondaryGradient,
                               borderRadius: BorderRadius.circular(8),
                             ),
                             child: const Text(

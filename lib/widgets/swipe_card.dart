@@ -38,19 +38,18 @@ class SwipeCard extends StatelessWidget {
       height: screenHeight * 0.6,
       margin: const EdgeInsets.symmetric(horizontal: 20),
       decoration: BoxDecoration(
-        gradient: LinearGradient(
-          begin: Alignment.topLeft,
-          end: Alignment.bottomRight,
-          colors: [
-            AppTheme.cardColor,
-            AppTheme.cardColor.withOpacity(0.8),
-          ],
-        ),
+        color: Colors.white,
         borderRadius: BorderRadius.circular(30),
-        boxShadow: AppTheme.hardShadow,
+        boxShadow: [
+          BoxShadow(
+            color: AppTheme.primaryYellow.withOpacity(0.3),
+            blurRadius: 30,
+            offset: const Offset(0, 15),
+          ),
+        ],
         border: Border.all(
-          color: AppTheme.halleyYellow.withOpacity(0.2),
-          width: 2,
+          color: AppTheme.primaryYellow,
+          width: 3,
         ),
       ),
       child: ClipRRect(
