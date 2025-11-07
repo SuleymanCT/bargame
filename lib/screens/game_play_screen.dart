@@ -17,11 +17,10 @@ class GamePlayScreen extends StatefulWidget {
   State<GamePlayScreen> createState() => _GamePlayScreenState();
 }
 
-class _GamePlayScreenState extends State<GamePlayScreen> {
+class _GamePlayScreenState extends State<GamePlayScreen> with SingleTickerProviderStateMixin {
   final CardSwiperController _swiperController = CardSwiperController();
   bool _isAnswering = false;
   double? _selectedRating;
-  bool _showRatingDialog = false;
 
   @override
   void dispose() {
@@ -38,7 +37,7 @@ class _GamePlayScreenState extends State<GamePlayScreen> {
     setState(() => _isAnswering = true);
 
     String? answer;
-    
+
     if (question.isBinary) {
       if (direction == CardSwiperDirection.right) {
         answer = question.options![0]; // OK
@@ -52,12 +51,6 @@ class _GamePlayScreenState extends State<GamePlayScreen> {
         gameService.submitAnswer(binaryAnswer: answer);
         _checkGameStatus(gameService);
       }
-    } else if (question.isRating) {
-      setState(() {
-        _showRatingDialog = true;
-        _isAnswering = false;
-      });
-      return;
     }
 
     Future.delayed(const Duration(milliseconds: 300), () {
@@ -80,16 +73,23 @@ class _GamePlayScreenState extends State<GamePlayScreen> {
   }
 
   void _submitRating(GameService gameService) {
-    if (_selectedRating == null) return;
-    
-    HapticFeedback.lightImpact();
+    if (_selectedRating == null || _isAnswering) return;
+
+    setState(() => _isAnswering = true);
+
+    HapticFeedback.mediumImpact();
     gameService.submitAnswer(ratingAnswer: _selectedRating);
-    
+
     setState(() {
-      _showRatingDialog = false;
       _selectedRating = null;
     });
-    
+
+    Future.delayed(const Duration(milliseconds: 300), () {
+      if (mounted) {
+        setState(() => _isAnswering = false);
+      }
+    });
+
     _checkGameStatus(gameService);
   }
 
@@ -112,30 +112,23 @@ class _GamePlayScreenState extends State<GamePlayScreen> {
               gradient: AppTheme.backgroundGradient,
             ),
             child: SafeArea(
-              child: Stack(
+              child: Column(
                 children: [
-                  Column(
-                    children: [
-                      _buildHeader(gameService, player, langService),
+                  _buildHeader(gameService, player, langService),
 
-                      const SizedBox(height: 20),
+                  const SizedBox(height: 20),
 
-                      _buildDynamicHalleyAvatar(gameService, player),
+                  _buildDynamicHalleyAvatar(gameService, player),
 
-                      const SizedBox(height: 20),
-                      
-                      Expanded(
-                        child: question.isBinary
-                            ? _buildSwipeCards(gameService, langService)
-                            : _buildRatingCard(question, langService),
-                      ),
-                      
-                      const SizedBox(height: 20),
-                    ],
+                  const SizedBox(height: 20),
+
+                  Expanded(
+                    child: question.isBinary
+                        ? _buildSwipeCards(gameService, langService)
+                        : _buildRatingCard(question, langService),
                   ),
-                  
-                  if (_showRatingDialog)
-                    _buildRatingDialog(gameService, question, langService),
+
+                  const SizedBox(height: 20),
                 ],
               ),
             ),
@@ -303,8 +296,21 @@ class _GamePlayScreenState extends State<GamePlayScreen> {
 }
 
   Widget _buildRatingCard(dynamic question, LanguageService langService) {
+    // Initialize rating if not set
+    if (_selectedRating == null) {
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        if (mounted) {
+          setState(() {
+            _selectedRating = ((question.minRating ?? 1) + (question.maxRating ?? 10)) / 2;
+          });
+        }
+      });
+    }
+
     return Center(
-      child: Container(
+      child: AnimatedContainer(
+        duration: const Duration(milliseconds: 400),
+        curve: Curves.easeOutBack,
         margin: const EdgeInsets.symmetric(horizontal: 20),
         padding: const EdgeInsets.all(32),
         decoration: BoxDecoration(
@@ -315,20 +321,77 @@ class _GamePlayScreenState extends State<GamePlayScreen> {
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
+            // Soru metni
             Text(
               question.getText(langService.currentLanguage),
-              style: AppTheme.textTheme.displaySmall,
+              style: AppTheme.textTheme.displaySmall?.copyWith(
+                fontSize: 28,
+                fontWeight: FontWeight.w800,
+                letterSpacing: -0.5,
+              ),
               textAlign: TextAlign.center,
             ),
-            const SizedBox(height: 40),
-            ElevatedButton(
-              onPressed: () {
-                setState(() {
-                  _showRatingDialog = true;
-                  _selectedRating = 5;
-                });
-              },
-              child: Text(langService.translate('Puanla', 'Rate')),
+
+            const SizedBox(height: 48),
+
+            // Rating slider
+            if (_selectedRating != null)
+              AnimatedOpacity(
+                duration: const Duration(milliseconds: 300),
+                opacity: 1.0,
+                child: RatingSlider(
+                  min: question.minRating ?? 1,
+                  max: question.maxRating ?? 10,
+                  value: _selectedRating!,
+                  onChanged: (value) {
+                    HapticFeedback.selectionClick();
+                    setState(() => _selectedRating = value);
+                  },
+                ),
+              ),
+
+            const SizedBox(height: 48),
+
+            // Gönder butonu
+            SizedBox(
+              width: double.infinity,
+              height: 56,
+              child: ElevatedButton(
+                onPressed: _isAnswering ? null : () => _submitRating(context.read<GameService>()),
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: AppTheme.primaryYellow,
+                  foregroundColor: AppTheme.backgroundDark,
+                  elevation: 8,
+                  shadowColor: AppTheme.primaryYellow.withOpacity(0.5),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(16),
+                  ),
+                ),
+                child: _isAnswering
+                    ? const SizedBox(
+                        width: 24,
+                        height: 24,
+                        child: CircularProgressIndicator(
+                          strokeWidth: 2,
+                          valueColor: AlwaysStoppedAnimation<Color>(Colors.black),
+                        ),
+                      )
+                    : Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            langService.translate('Gönder', 'Submit'),
+                            style: const TextStyle(
+                              fontSize: 18,
+                              fontWeight: FontWeight.w700,
+                              letterSpacing: 0.5,
+                            ),
+                          ),
+                          const SizedBox(width: 8),
+                          const Icon(Icons.send_rounded, size: 20),
+                        ],
+                      ),
+              ),
             ),
           ],
         ),
@@ -336,53 +399,6 @@ class _GamePlayScreenState extends State<GamePlayScreen> {
     );
   }
 
-  Widget _buildRatingDialog(GameService gameService, dynamic question, LanguageService langService) {
-    return Container(
-      color: Colors.black87,
-      child: Center(
-        child: Container(
-          margin: const EdgeInsets.all(20),
-          padding: const EdgeInsets.all(32),
-          decoration: BoxDecoration(
-            gradient: AppTheme.cardGradient,
-            borderRadius: BorderRadius.circular(30),
-            boxShadow: AppTheme.hardShadow,
-          ),
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              Text(
-                question.getText(langService.currentLanguage),
-                style: AppTheme.textTheme.headlineMedium,
-                textAlign: TextAlign.center,
-              ),
-              
-              const SizedBox(height: 40),
-              
-              RatingSlider(
-                min: question.minRating ?? 1,
-                max: question.maxRating ?? 10,
-                value: _selectedRating ?? 5,
-                onChanged: (value) {
-                  setState(() => _selectedRating = value);
-                },
-              ),
-              
-              const SizedBox(height: 40),
-              
-              SizedBox(
-                width: double.infinity,
-                child: ElevatedButton(
-                  onPressed: () => _submitRating(gameService),
-                  child: Text(langService.translate('Gönder', 'Submit')),
-                ),
-              ),
-            ],
-          ),
-        ),
-      ),
-    );
-  }
 
   void _showExitDialog() {
     showDialog(
