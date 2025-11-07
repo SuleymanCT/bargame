@@ -3,7 +3,7 @@ import '../models/question.dart';
 import '../config/app_theme.dart';
 import 'halley_avatar.dart';
 
-class SwipeCard extends StatelessWidget {
+class SwipeCard extends StatefulWidget {
   final Question question;
   final String language;
 
@@ -13,8 +13,38 @@ class SwipeCard extends StatelessWidget {
     this.language = 'tr',
   });
 
+  @override
+  State<SwipeCard> createState() => _SwipeCardState();
+}
+
+class _SwipeCardState extends State<SwipeCard> with SingleTickerProviderStateMixin {
+  late AnimationController _animationController;
+  late Animation<double> _pulseAnimation;
+
+  @override
+  void initState() {
+    super.initState();
+    _animationController = AnimationController(
+      vsync: this,
+      duration: const Duration(milliseconds: 1500),
+    )..repeat(reverse: true);
+
+    _pulseAnimation = Tween<double>(begin: 1.0, end: 1.05).animate(
+      CurvedAnimation(
+        parent: _animationController,
+        curve: Curves.easeInOut,
+      ),
+    );
+  }
+
+  @override
+  void dispose() {
+    _animationController.dispose();
+    super.dispose();
+  }
+
   String get _categoryEmoji {
-    switch (question.category) {
+    switch (widget.question.category) {
       case 'ok_not_ok':
         return '🔥';
       case 'kiskanc':
@@ -104,34 +134,42 @@ class SwipeCard extends StatelessWidget {
                   Expanded(
                     child: Center(
                       child: Text(
-                        question.getText(language),
+                        widget.question.getText(widget.language),
                         style: AppTheme.textTheme.displaySmall?.copyWith(
-                          fontSize: 28,
+                          fontSize: 30,
+                          fontWeight: FontWeight.w700,
                           height: 1.4,
+                          letterSpacing: -0.5,
                         ),
                         textAlign: TextAlign.center,
                       ),
                     ),
                   ),
-                  
-                  const SizedBox(height: 20),
-                  
+
+                  const SizedBox(height: 24),
+
                   // Swipe hint
-                  if (question.isBinary && question.options != null && question.options!.length == 2)
+                  if (widget.question.isBinary && widget.question.options != null && widget.question.options!.length == 2)
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
-                        _buildSwipeHint(
-                          Icons.close,
-                          question.options![1], // Sol taraf (NOT OK, Kıskanmam, Değil, Yapamaz)
-                          AppTheme.errorColor,
-                          Icons.arrow_back,
+                        ScaleTransition(
+                          scale: _pulseAnimation,
+                          child: _buildSwipeHint(
+                            Icons.close_rounded,
+                            widget.question.options![1], // Sol taraf (NOT OK, Kıskanmam, Değil, Yapamaz)
+                            AppTheme.errorColor,
+                            Icons.arrow_back_rounded,
+                          ),
                         ),
-                        _buildSwipeHint(
-                          Icons.check,
-                          question.options![0], // Sağ taraf (OK, Kıskanırım, Aldatma, Yapabilir)
-                          AppTheme.successColor,
-                          Icons.arrow_forward,
+                        ScaleTransition(
+                          scale: _pulseAnimation,
+                          child: _buildSwipeHint(
+                            Icons.check_rounded,
+                            widget.question.options![0], // Sağ taraf (OK, Kıskanırım, Aldatma, Yapabilir)
+                            AppTheme.successColor,
+                            Icons.arrow_forward_rounded,
+                          ),
                         ),
                       ],
                     ),
@@ -153,44 +191,60 @@ class SwipeCard extends StatelessWidget {
     return Column(
       children: [
         Container(
-          padding: const EdgeInsets.all(12),
+          padding: const EdgeInsets.all(16),
           decoration: BoxDecoration(
-            color: color.withOpacity(0.2),
+            color: color.withOpacity(0.15),
             shape: BoxShape.circle,
-            border: Border.all(color: color, width: 2),
-          ),
-          child: Icon(icon, color: color, size: 32),
-        ),
-        const SizedBox(height: 8),
-        Row(
-          children: [
-            Icon(arrowIcon, color: color, size: 16),
-            const SizedBox(width: 4),
-            Text(
-              text,
-              style: AppTheme.textTheme.labelLarge?.copyWith(
-                color: color,
-                fontSize: 12,
+            border: Border.all(color: color, width: 3),
+            boxShadow: [
+              BoxShadow(
+                color: color.withOpacity(0.3),
+                blurRadius: 12,
+                spreadRadius: 2,
               ),
-            ),
-          ],
+            ],
+          ),
+          child: Icon(icon, color: color, size: 36),
+        ),
+        const SizedBox(height: 12),
+        Container(
+          padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+          decoration: BoxDecoration(
+            color: color.withOpacity(0.1),
+            borderRadius: BorderRadius.circular(12),
+          ),
+          child: Row(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Icon(arrowIcon, color: color, size: 18),
+              const SizedBox(width: 6),
+              Text(
+                text,
+                style: AppTheme.textTheme.labelLarge?.copyWith(
+                  color: color,
+                  fontSize: 13,
+                  fontWeight: FontWeight.w700,
+                ),
+              ),
+            ],
+          ),
         ),
       ],
     );
   }
 
   String _getCategoryName() {
-    switch (question.category) {
+    switch (widget.question.category) {
       case 'ok_not_ok':
-        return language == 'tr' ? 'OK mu NOT OK mu?' : 'OK or NOT OK?';
+        return widget.language == 'tr' ? 'OK mu NOT OK mu?' : 'OK or NOT OK?';
       case 'kiskanc':
-        return language == 'tr' ? 'Kıskanç mısın?' : 'Jealous?';
+        return widget.language == 'tr' ? 'Kıskanç mısın?' : 'Jealous?';
       case 'aldatma':
-        return language == 'tr' ? 'Aldatma mı?' : 'Cheating?';
+        return widget.language == 'tr' ? 'Aldatma mı?' : 'Cheating?';
       case 'sevgilim_yapabilir':
-        return language == 'tr' ? 'Yapabilir mi?' : 'Can they?';
+        return widget.language == 'tr' ? 'Yapabilir mi?' : 'Can they?';
       case 'kac_kizarsin':
-        return language == 'tr' ? 'Kaç Kızarsın?' : 'How Angry?';
+        return widget.language == 'tr' ? 'Kaç Kızarsın?' : 'How Angry?';
       default:
         return '';
     }
