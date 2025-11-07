@@ -49,16 +49,16 @@ class _RatingSliderState extends State<RatingSlider> with SingleTickerProviderSt
         AnimatedContainer(
           duration: const Duration(milliseconds: 300),
           curve: Curves.easeInOut,
-          width: 140,
-          height: 140,
+          width: 120,
+          height: 120,
           decoration: BoxDecoration(
             shape: BoxShape.circle,
             gradient: _getRatingGradient(widget.value),
             boxShadow: [
               BoxShadow(
                 color: _getRatingColor(widget.value).withOpacity(0.6),
-                blurRadius: 40,
-                spreadRadius: 8,
+                blurRadius: 30,
+                spreadRadius: 5,
               ),
             ],
           ),
@@ -78,14 +78,14 @@ class _RatingSliderState extends State<RatingSlider> with SingleTickerProviderSt
                     widget.value.toInt().toString(),
                     key: ValueKey(widget.value.toInt()),
                     style: AppTheme.textTheme.displayLarge?.copyWith(
-                      fontSize: 56,
+                      fontSize: 48,
                       fontWeight: FontWeight.w900,
                       color: Colors.white,
                       letterSpacing: -2,
                     ),
                   ),
                 ),
-                const SizedBox(height: 4),
+                const SizedBox(height: 2),
                 AnimatedSwitcher(
                   duration: const Duration(milliseconds: 200),
                   child: Text(
@@ -94,7 +94,7 @@ class _RatingSliderState extends State<RatingSlider> with SingleTickerProviderSt
                     style: AppTheme.textTheme.titleLarge?.copyWith(
                       color: Colors.white,
                       fontWeight: FontWeight.w700,
-                      fontSize: 16,
+                      fontSize: 14,
                       letterSpacing: 0.5,
                     ),
                   ),
@@ -103,8 +103,8 @@ class _RatingSliderState extends State<RatingSlider> with SingleTickerProviderSt
             ),
           ),
         ),
-        
-        const SizedBox(height: 48),
+
+        const SizedBox(height: 32),
 
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 12),

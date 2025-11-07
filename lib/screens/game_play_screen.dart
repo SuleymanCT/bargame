@@ -312,88 +312,90 @@ class _GamePlayScreenState extends State<GamePlayScreen> with SingleTickerProvid
         duration: const Duration(milliseconds: 400),
         curve: Curves.easeOutBack,
         margin: const EdgeInsets.symmetric(horizontal: 20),
-        padding: const EdgeInsets.all(32),
         decoration: BoxDecoration(
           gradient: AppTheme.cardGradient,
           borderRadius: BorderRadius.circular(30),
           boxShadow: AppTheme.hardShadow,
         ),
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            // Soru metni
-            Text(
-              question.getText(langService.currentLanguage),
-              style: AppTheme.textTheme.displaySmall?.copyWith(
-                fontSize: 28,
-                fontWeight: FontWeight.w800,
-                letterSpacing: -0.5,
-              ),
-              textAlign: TextAlign.center,
-            ),
-
-            const SizedBox(height: 48),
-
-            // Rating slider
-            if (_selectedRating != null)
-              AnimatedOpacity(
-                duration: const Duration(milliseconds: 300),
-                opacity: 1.0,
-                child: RatingSlider(
-                  min: question.minRating ?? 1,
-                  max: question.maxRating ?? 10,
-                  value: _selectedRating!,
-                  onChanged: (value) {
-                    HapticFeedback.selectionClick();
-                    setState(() => _selectedRating = value);
-                  },
+        child: SingleChildScrollView(
+          padding: const EdgeInsets.all(24),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              // Soru metni
+              Text(
+                question.getText(langService.currentLanguage),
+                style: AppTheme.textTheme.displaySmall?.copyWith(
+                  fontSize: 26,
+                  fontWeight: FontWeight.w800,
+                  letterSpacing: -0.5,
                 ),
+                textAlign: TextAlign.center,
               ),
 
-            const SizedBox(height: 48),
+              const SizedBox(height: 32),
 
-            // Gönder butonu
-            SizedBox(
-              width: double.infinity,
-              height: 56,
-              child: ElevatedButton(
-                onPressed: _isAnswering ? null : () => _submitRating(context.read<GameService>()),
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: AppTheme.primaryYellow,
-                  foregroundColor: AppTheme.backgroundDark,
-                  elevation: 8,
-                  shadowColor: AppTheme.primaryYellow.withOpacity(0.5),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(16),
+              // Rating slider
+              if (_selectedRating != null)
+                AnimatedOpacity(
+                  duration: const Duration(milliseconds: 300),
+                  opacity: 1.0,
+                  child: RatingSlider(
+                    min: question.minRating ?? 1,
+                    max: question.maxRating ?? 10,
+                    value: _selectedRating!,
+                    onChanged: (value) {
+                      HapticFeedback.selectionClick();
+                      setState(() => _selectedRating = value);
+                    },
                   ),
                 ),
-                child: _isAnswering
-                    ? const SizedBox(
-                        width: 24,
-                        height: 24,
-                        child: CircularProgressIndicator(
-                          strokeWidth: 2,
-                          valueColor: AlwaysStoppedAnimation<Color>(Colors.black),
-                        ),
-                      )
-                    : Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Text(
-                            langService.translate('Gönder', 'Submit'),
-                            style: const TextStyle(
-                              fontSize: 18,
-                              fontWeight: FontWeight.w700,
-                              letterSpacing: 0.5,
-                            ),
+
+              const SizedBox(height: 32),
+
+              // Gönder butonu
+              SizedBox(
+                width: double.infinity,
+                height: 56,
+                child: ElevatedButton(
+                  onPressed: _isAnswering ? null : () => _submitRating(context.read<GameService>()),
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: AppTheme.primaryYellow,
+                    foregroundColor: AppTheme.backgroundDark,
+                    elevation: 8,
+                    shadowColor: AppTheme.primaryYellow.withOpacity(0.5),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(16),
+                    ),
+                  ),
+                  child: _isAnswering
+                      ? const SizedBox(
+                          width: 24,
+                          height: 24,
+                          child: CircularProgressIndicator(
+                            strokeWidth: 2,
+                            valueColor: AlwaysStoppedAnimation<Color>(Colors.black),
                           ),
-                          const SizedBox(width: 8),
-                          const Icon(Icons.send_rounded, size: 20),
-                        ],
-                      ),
+                        )
+                      : Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text(
+                              langService.translate('Gönder', 'Submit'),
+                              style: const TextStyle(
+                                fontSize: 18,
+                                fontWeight: FontWeight.w700,
+                                letterSpacing: 0.5,
+                              ),
+                            ),
+                            const SizedBox(width: 8),
+                            const Icon(Icons.send_rounded, size: 20),
+                          ],
+                        ),
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );
