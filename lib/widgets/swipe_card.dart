@@ -3,7 +3,7 @@ import '../models/question.dart';
 import '../config/app_theme.dart';
 import 'halley_avatar.dart';
 
-class SwipeCard extends StatefulWidget {
+class SwipeCard extends StatelessWidget {
   final Question question;
   final String language;
 
@@ -13,38 +13,8 @@ class SwipeCard extends StatefulWidget {
     this.language = 'tr',
   });
 
-  @override
-  State<SwipeCard> createState() => _SwipeCardState();
-}
-
-class _SwipeCardState extends State<SwipeCard> with SingleTickerProviderStateMixin {
-  late AnimationController _animationController;
-  late Animation<double> _pulseAnimation;
-
-  @override
-  void initState() {
-    super.initState();
-    _animationController = AnimationController(
-      vsync: this,
-      duration: const Duration(milliseconds: 1500),
-    )..repeat(reverse: true);
-
-    _pulseAnimation = Tween<double>(begin: 1.0, end: 1.05).animate(
-      CurvedAnimation(
-        parent: _animationController,
-        curve: Curves.easeInOut,
-      ),
-    );
-  }
-
-  @override
-  void dispose() {
-    _animationController.dispose();
-    super.dispose();
-  }
-
   String get _categoryEmoji {
-    switch (widget.question.category) {
+    switch (question.category) {
       case 'ok_not_ok':
         return '🔥';
       case 'kiskanc':
@@ -134,42 +104,34 @@ class _SwipeCardState extends State<SwipeCard> with SingleTickerProviderStateMix
                   Expanded(
                     child: Center(
                       child: Text(
-                        widget.question.getText(widget.language),
+                        question.getText(language),
                         style: AppTheme.textTheme.displaySmall?.copyWith(
-                          fontSize: 30,
-                          fontWeight: FontWeight.w700,
+                          fontSize: 28,
                           height: 1.4,
-                          letterSpacing: -0.5,
                         ),
                         textAlign: TextAlign.center,
                       ),
                     ),
                   ),
-
-                  const SizedBox(height: 24),
-
+                  
+                  const SizedBox(height: 20),
+                  
                   // Swipe hint
-                  if (widget.question.isBinary && widget.question.options != null && widget.question.options!.length == 2)
+                  if (question.isBinary && question.options != null && question.options!.length == 2)
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
-                        ScaleTransition(
-                          scale: _pulseAnimation,
-                          child: _buildSwipeHint(
-                            Icons.close_rounded,
-                            widget.question.options![1], // Sol taraf (NOT OK, Kıskanmam, Değil, Yapamaz)
-                            AppTheme.errorColor,
-                            Icons.arrow_back_rounded,
-                          ),
+                        _buildSwipeHint(
+                          Icons.close,
+                          question.options![1], // Sol taraf (NOT OK, Kıskanmam, Değil, Yapamaz)
+                          AppTheme.errorColor,
+                          Icons.arrow_back,
                         ),
-                        ScaleTransition(
-                          scale: _pulseAnimation,
-                          child: _buildSwipeHint(
-                            Icons.check_rounded,
-                            widget.question.options![0], // Sağ taraf (OK, Kıskanırım, Aldatma, Yapabilir)
-                            AppTheme.successColor,
-                            Icons.arrow_forward_rounded,
-                          ),
+                        _buildSwipeHint(
+                          Icons.check,
+                          question.options![0], // Sağ taraf (OK, Kıskanırım, Aldatma, Yapabilir)
+                          AppTheme.successColor,
+                          Icons.arrow_forward,
                         ),
                       ],
                     ),
@@ -191,60 +153,44 @@ class _SwipeCardState extends State<SwipeCard> with SingleTickerProviderStateMix
     return Column(
       children: [
         Container(
-          padding: const EdgeInsets.all(16),
+          padding: const EdgeInsets.all(12),
           decoration: BoxDecoration(
-            color: color.withOpacity(0.15),
+            color: color.withOpacity(0.2),
             shape: BoxShape.circle,
-            border: Border.all(color: color, width: 3),
-            boxShadow: [
-              BoxShadow(
-                color: color.withOpacity(0.3),
-                blurRadius: 12,
-                spreadRadius: 2,
-              ),
-            ],
+            border: Border.all(color: color, width: 2),
           ),
-          child: Icon(icon, color: color, size: 36),
+          child: Icon(icon, color: color, size: 32),
         ),
-        const SizedBox(height: 12),
-        Container(
-          padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
-          decoration: BoxDecoration(
-            color: color.withOpacity(0.1),
-            borderRadius: BorderRadius.circular(12),
-          ),
-          child: Row(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              Icon(arrowIcon, color: color, size: 18),
-              const SizedBox(width: 6),
-              Text(
-                text,
-                style: AppTheme.textTheme.labelLarge?.copyWith(
-                  color: color,
-                  fontSize: 13,
-                  fontWeight: FontWeight.w700,
-                ),
+        const SizedBox(height: 8),
+        Row(
+          children: [
+            Icon(arrowIcon, color: color, size: 16),
+            const SizedBox(width: 4),
+            Text(
+              text,
+              style: AppTheme.textTheme.labelLarge?.copyWith(
+                color: color,
+                fontSize: 12,
               ),
-            ],
-          ),
+            ),
+          ],
         ),
       ],
     );
   }
 
   String _getCategoryName() {
-    switch (widget.question.category) {
+    switch (question.category) {
       case 'ok_not_ok':
-        return widget.language == 'tr' ? 'OK mu NOT OK mu?' : 'OK or NOT OK?';
+        return language == 'tr' ? 'OK mu NOT OK mu?' : 'OK or NOT OK?';
       case 'kiskanc':
-        return widget.language == 'tr' ? 'Kıskanç mısın?' : 'Jealous?';
+        return language == 'tr' ? 'Kıskanç mısın?' : 'Jealous?';
       case 'aldatma':
-        return widget.language == 'tr' ? 'Aldatma mı?' : 'Cheating?';
+        return language == 'tr' ? 'Aldatma mı?' : 'Cheating?';
       case 'sevgilim_yapabilir':
-        return widget.language == 'tr' ? 'Yapabilir mi?' : 'Can they?';
+        return language == 'tr' ? 'Yapabilir mi?' : 'Can they?';
       case 'kac_kizarsin':
-        return widget.language == 'tr' ? 'Kaç Kızarsın?' : 'How Angry?';
+        return language == 'tr' ? 'Kaç Kızarsın?' : 'How Angry?';
       default:
         return '';
     }

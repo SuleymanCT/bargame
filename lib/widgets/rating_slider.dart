@@ -19,46 +19,22 @@ class RatingSlider extends StatefulWidget {
   State<RatingSlider> createState() => _RatingSliderState();
 }
 
-class _RatingSliderState extends State<RatingSlider> with SingleTickerProviderStateMixin {
-  late AnimationController _animationController;
-
-  @override
-  void initState() {
-    super.initState();
-    _animationController = AnimationController(
-      vsync: this,
-      duration: const Duration(milliseconds: 150),
-    );
-  }
-
-  @override
-  void dispose() {
-    _animationController.dispose();
-    super.dispose();
-  }
-
-  void _onValueChanged(double value) {
-    _animationController.forward(from: 0);
-    widget.onChanged(value);
-  }
-
+class _RatingSliderState extends State<RatingSlider> {
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
-        AnimatedContainer(
-          duration: const Duration(milliseconds: 300),
-          curve: Curves.easeInOut,
-          width: 140,
-          height: 140,
+        Container(
+          width: 120,
+          height: 120,
           decoration: BoxDecoration(
             shape: BoxShape.circle,
             gradient: _getRatingGradient(widget.value),
             boxShadow: [
               BoxShadow(
-                color: _getRatingColor(widget.value).withOpacity(0.6),
-                blurRadius: 40,
-                spreadRadius: 8,
+                color: _getRatingColor(widget.value).withOpacity(0.5),
+                blurRadius: 30,
+                spreadRadius: 5,
               ),
             ],
           ),
@@ -66,37 +42,18 @@ class _RatingSliderState extends State<RatingSlider> with SingleTickerProviderSt
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                AnimatedSwitcher(
-                  duration: const Duration(milliseconds: 200),
-                  transitionBuilder: (child, animation) {
-                    return ScaleTransition(
-                      scale: animation,
-                      child: child,
-                    );
-                  },
-                  child: Text(
-                    widget.value.toInt().toString(),
-                    key: ValueKey(widget.value.toInt()),
-                    style: AppTheme.textTheme.displayLarge?.copyWith(
-                      fontSize: 56,
-                      fontWeight: FontWeight.w900,
-                      color: Colors.white,
-                      letterSpacing: -2,
-                    ),
+                Text(
+                  widget.value.toInt().toString(),
+                  style: AppTheme.textTheme.displayLarge?.copyWith(
+                    fontSize: 48,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white,
                   ),
                 ),
-                const SizedBox(height: 4),
-                AnimatedSwitcher(
-                  duration: const Duration(milliseconds: 200),
-                  child: Text(
-                    _getRatingText(widget.value),
-                    key: ValueKey(_getRatingText(widget.value)),
-                    style: AppTheme.textTheme.titleLarge?.copyWith(
-                      color: Colors.white,
-                      fontWeight: FontWeight.w700,
-                      fontSize: 16,
-                      letterSpacing: 0.5,
-                    ),
+                Text(
+                  _getRatingText(widget.value),
+                  style: AppTheme.textTheme.bodyMedium?.copyWith(
+                    color: Colors.white70,
                   ),
                 ),
               ],
@@ -104,68 +61,46 @@ class _RatingSliderState extends State<RatingSlider> with SingleTickerProviderSt
           ),
         ),
         
-        const SizedBox(height: 48),
-
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 12),
-          child: SliderTheme(
-            data: SliderThemeData(
-              trackHeight: 10,
-              activeTrackColor: _getRatingColor(widget.value),
-              inactiveTrackColor: Colors.white.withOpacity(0.3),
-              thumbColor: Colors.white,
-              thumbShape: const RoundSliderThumbShape(
-                enabledThumbRadius: 18,
-                elevation: 8,
-              ),
-              overlayColor: Colors.white.withOpacity(0.2),
-              overlayShape: const RoundSliderOverlayShape(
-                overlayRadius: 32,
-              ),
-              activeTickMarkColor: Colors.transparent,
-              inactiveTickMarkColor: Colors.transparent,
+        const SizedBox(height: 40),
+        
+        SliderTheme(
+          data: SliderThemeData(
+            trackHeight: 8,
+            activeTrackColor: _getRatingColor(widget.value),
+            inactiveTrackColor: AppTheme.cardColor,
+            thumbColor: _getRatingColor(widget.value),
+            thumbShape: const RoundSliderThumbShape(
+              enabledThumbRadius: 14,
             ),
-            child: Slider(
-              value: widget.value,
-              min: widget.min.toDouble(),
-              max: widget.max.toDouble(),
-              divisions: widget.max - widget.min,
-              onChanged: _onValueChanged,
+            overlayColor: _getRatingColor(widget.value).withOpacity(0.2),
+            overlayShape: const RoundSliderOverlayShape(
+              overlayRadius: 28,
             ),
+          ),
+          child: Slider(
+            value: widget.value,
+            min: widget.min.toDouble(),
+            max: widget.max.toDouble(),
+            divisions: widget.max - widget.min,
+            onChanged: widget.onChanged,
           ),
         ),
         
         Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 28),
+          padding: const EdgeInsets.symmetric(horizontal: 24),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Container(
-                padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
-                decoration: BoxDecoration(
-                  color: Colors.white.withOpacity(0.2),
-                  borderRadius: BorderRadius.circular(12),
-                ),
-                child: Text(
-                  '${widget.min}',
-                  style: AppTheme.textTheme.titleLarge?.copyWith(
-                    color: Colors.white,
-                    fontWeight: FontWeight.w700,
-                  ),
+              Text(
+                '${widget.min}',
+                style: AppTheme.textTheme.titleLarge?.copyWith(
+                  color: AppTheme.textSecondary,
                 ),
               ),
-              Container(
-                padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
-                decoration: BoxDecoration(
-                  color: Colors.white.withOpacity(0.2),
-                  borderRadius: BorderRadius.circular(12),
-                ),
-                child: Text(
-                  '${widget.max}',
-                  style: AppTheme.textTheme.titleLarge?.copyWith(
-                    color: Colors.white,
-                    fontWeight: FontWeight.w700,
-                  ),
+              Text(
+                '${widget.max}',
+                style: AppTheme.textTheme.titleLarge?.copyWith(
+                  color: AppTheme.textSecondary,
                 ),
               ),
             ],
